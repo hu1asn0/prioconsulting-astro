@@ -5,44 +5,44 @@ import Hero from '../components/Hero.astro';
 
 <Layout
   title="Kapcsolat | Prio Consulting"
-  description="Vegye fel velunk a kapcsolatot. IT Projekt Menedzsment tanacsadas es konzultacio."
+  description="Vegye fel velünk a kapcsolatot. IT Projekt Menedzsment tanácsadás és konzultáció."
   lang="hu"
 >
   <Hero
     title="Kapcsolat"
-    subtitle="Kerjen ingyenes konzultaciot, es beszelgessunk projektje igenyeirol."
+    subtitle="Kérjen ingyenes konzultációt, és beszéljünk az Ön projekt igényeiről."
   />
 
   <section class="section section-light">
     <div class="container contact-grid">
       <!-- Contact Form -->
       <div class="contact-form-wrapper">
-        <h2>Irjon nekunk</h2>
+        <h2>Írjon nekünk</h2>
         <form action="https://formspree.io/f/xplaceholder" method="POST" class="contact-form">
           <div class="form-group">
-            <label for="name">Nev</label>
-            <input type="text" id="name" name="name" class="input" required placeholder="Teljes nev" />
+            <label for="name">Név</label>
+            <input type="text" id="name" name="name" class="input" required placeholder="Teljes név" />
           </div>
           <div class="form-group">
             <label for="email">Email</label>
             <input type="email" id="email" name="email" class="input" required placeholder="pelda@email.com" />
           </div>
           <div class="form-group">
-            <label for="inquiry">Erdeklodes tipusa</label>
+            <label for="inquiry">Érdeklődés típusa</label>
             <select id="inquiry" name="inquiry" class="select" required>
-              <option value="" disabled selected>Valasszon...</option>
+              <option value="" disabled selected>Válasszon...</option>
               <option value="projekt-menedzsment">IT Projekt Menedzsment</option>
-              <option value="automatizalas">Automatizalas</option>
-              <option value="mentoring">Mentoring es Coaching</option>
-              <option value="egyeb">Egyeb</option>
+              <option value="automatizalas">Automatizálás</option>
+              <option value="mentoring">Mentoring és Coaching</option>
+              <option value="egyeb">Egyéb</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="message">Uzenet</label>
-            <textarea id="message" name="message" class="textarea" required placeholder="Irja le roviden, miben segithetunk..."></textarea>
+            <label for="message">Üzenet</label>
+            <textarea id="message" name="message" class="textarea" required placeholder="Írja le röviden, miben segíthetünk..."></textarea>
           </div>
           <button type="submit" class="btn-primary submit-btn">
-            Uzenet kuldese
+            Üzenet küldése
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </button>
         </form>
@@ -50,7 +50,7 @@ import Hero from '../components/Hero.astro';
 
       <!-- Contact Info -->
       <div class="contact-info">
-        <h2>Elerhetosegek</h2>
+        <h2>Elérhetőségek</h2>
         <div class="info-cards">
           <div class="info-card">
             <div class="info-icon">
@@ -58,7 +58,7 @@ import Hero from '../components/Hero.astro';
             </div>
             <div>
               <h4>Iroda</h4>
-              <p>Wesselenyi u. 4<br />1077 Budapest<br />Magyarorszag</p>
+              <p>Wesselényi utca 4.<br />1075 Budapest<br />Magyarország</p>
             </div>
           </div>
           <div class="info-card">
@@ -67,7 +67,7 @@ import Hero from '../components/Hero.astro';
             </div>
             <div>
               <h4>Email</h4>
-              <p><a href="mailto:info@prioconsulting.hu">info@prioconsulting.hu</a></p>
+              <p><a class="obf-email" href="#">…</a></p>
             </div>
           </div>
         </div>

@@ -8,20 +8,20 @@ import NewsletterSignup from '../components/NewsletterSignup.astro';
 
 const faqItems = [
   {
-    question: 'Milyen projektekhez ajanlott a tanacsadas?',
-    answer: 'SAP, CRM, ERP migraciok, digitalis transzformacios projektek, IT infrastruktura fejlesztesek es barmilyen nagyvallalati IT projekt, ahol tapasztalt projekt menedzsmentre van szukseg.',
+    question: 'Milyen projektekhez ajánlott a tanácsadás?',
+    answer: 'SAP, CRM, ERP migrációk, digitális transzformációs projektek, IT infrastruktúra fejlesztések és bármilyen nagyvállalati IT projekt, ahol tapasztalt projektmenedzsmentre van szükség.',
   },
   {
-    question: 'Hogyan zajlik az egyuttmukodes?',
-    answer: 'Elso lepeskent egy ingyenes konzultacion felterkepezzuk az igenyeit. Ezutan egy reszletes projekttervvel terunk vissza, amely tartalmazza az idokereteket, merfoldkoveket es az arajanlatot.',
+    question: 'Hogyan zajlik az együttműködés?',
+    answer: 'Első lépésként egy ingyenes konzultáción feltérképezzük az igényeit. Ezután egy részletes projekttervvel térünk vissza, amely tartalmazza az időkereteket, mérföldköveket és az árajánlatot.',
   },
   {
-    question: 'Mekkora projektekhez erdemes kulso PM-et bevonni?',
-    answer: 'Altalaban 3 honapnal hosszabb, tobb csapatot erinto, vagy strategiai fontossagu projekteknel erdemes tapasztalt kulso projekt menedzsert bevonni. Ez biztositja a fuggetlen, objektiv vezetest.',
+    question: 'Mekkora projektekhez érdemes külső PM-et bevonni?',
+    answer: 'Általában 3 hónapnál hosszabb, több csapatot érintő, vagy stratégiai fontosságú projekteknél érdemes tapasztalt külső projektmenedzsert bevonni. Ez biztosítja a független, objektív vezetést.',
   },
   {
-    question: 'Milyen iparagakban van tapasztalatuk?',
-    answer: 'Tobb mint 15 ev tapasztalattal rendelkezunk energia, penzugy, gyartas es szolgaltato szektorban. Ugyfeleink kozott nagyvallalatok es KKV-k egyarant megtalalhatok.',
+    question: 'Milyen iparágakban van tapasztalatuk?',
+    answer: 'Több mint 15 év tapasztalattal rendelkezünk az energia, pénzügy, gyártás és szolgáltató szektorban. Ügyfeleink között nagyvállalatok és KKV-k egyaránt megtalálhatók.',
   },
 ];
 
@@ -32,36 +32,36 @@ const iconMentor = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" 
 ---
 
 <Layout
-  title="Prio Consulting | Strategiai IT Projekt Menedzsment"
-  description="Prio Consulting — Strategiai IT Projekt Menedzsment es tanacsadas. 15+ ev tapasztalat nagyvallalati IT projektek vezeteseben."
+  title="Prio Consulting | Stratégiai IT Projekt Menedzsment"
+  description="Prio Consulting — Stratégiai IT Projekt Menedzsment és tanácsadás. 15+ év tapasztalat nagyvállalati IT projektek vezetésében."
   lang="hu"
 >
   <Hero
-    title="Strategiai IT Projekt Menedzsment"
-    subtitle="Tapasztalt IT projekt menedzsment tanacsadas, amely biztositja projektjei sikeres megvalositasat — idoben, koltseghatarony belul es az elvart minosegben."
-    ctaText="Kerjen ajanlatot"
+    title="Stratégiai IT Projekt Menedzsment"
+    subtitle="Tapasztalt IT projektmenedzsment tanácsadás, amely biztosítja projektjei sikeres megvalósítását — időben, költséghatáron belül és az elvárt minőségben."
+    ctaText="Kérjen árajánlatot"
     ctaLink="/kapcsolat/"
   />
 
   <!-- Services Section -->
   <section class="section section-light">
     <div class="container">
-      <h2 class="text-center section-heading">Szolgaltatasaink</h2>
-      <p class="section-subtitle text-center">Atfogo IT projekt menedzsment megoldasok vallalata szamara</p>
+      <h2 class="text-center section-heading">Szolgáltatásaink</h2>
+      <p class="section-subtitle text-center">Átfogó IT projektmenedzsment megoldások vállalata számára</p>
       <div class="services-grid">
         <ServiceCard
           title="IT Projekt Menedzsment"
-          description="SAP, CRM es ERP migraciok professzionalis vezetese. Agilis es vizeses modszertanok, kockazatkezeles, eroforras-tervezes."
+          description="SAP, CRM és ERP migrációk professzionális vezetése. Agilis és vízesés módszertanok, kockázatkezelés, erőforrás-tervezés."
           icon={iconPM}
         />
         <ServiceCard
-          title="Automatizalas"
-          description="Uzleti folyamatok automatizalasa, workflow optimalizalas, AI integraciok tervezese es megvalositasa."
+          title="Automatizálás"
+          description="Üzleti folyamatok automatizálása, workflow optimalizálás, AI integrációk tervezése és megvalósítása."
           icon={iconAuto}
         />
         <ServiceCard
           title="Mentoring"
-          description="IT projekt menedzserek szemelyre szabott coaching programja. Vezetoi kompetenciak, stakeholder menedzsment."
+          description="IT projektmenedzserek személyre szabott coaching programja. Vezetői kompetenciák, stakeholder menedzsment."
           icon={iconMentor}
         />
       </div>
@@ -73,16 +73,16 @@ const iconMentor = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" 
     <div class="container">
       <div class="stats-grid">
         <div class="stat-item" data-stat>
-          <span class="stat-number" data-target="15">0</span><span class="stat-suffix">+</span>
-          <span class="stat-label">ev tapasztalat</span>
+          <div class="stat-value"><span class="stat-number" data-target="15">0</span><span class="stat-suffix">+</span></div>
+          <span class="stat-label">év tapasztalat</span>
         </div>
         <div class="stat-item" data-stat>
-          <span class="stat-number" data-target="50">0</span><span class="stat-suffix">+</span>
+          <div class="stat-value"><span class="stat-number" data-target="50">0</span><span class="stat-suffix">+</span></div>
           <span class="stat-label">sikeres projekt</span>
         </div>
         <div class="stat-item" data-stat>
-          <span class="stat-number" data-target="100">0</span><span class="stat-suffix">%</span>
-          <span class="stat-label">ugyfel-elegedettseg</span>
+          <div class="stat-value"><span class="stat-number" data-target="100">0</span><span class="stat-suffix">%</span></div>
+          <span class="stat-label">ügyfél-elégedettség</span>
         </div>
       </div>
     </div>
@@ -91,12 +91,12 @@ const iconMentor = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" 
   <!-- Testimonial Section -->
   <section class="section section-surface">
     <div class="container">
-      <h2 class="text-center section-heading">Amit ugyfeleink mondanak</h2>
+      <h2 class="text-center section-heading">Amit ügyfeleink mondanak</h2>
       <Testimonial
-        quote="A Prio Consulting csapata kiemelkedo szakmai tudast es projekt menedzsment kepessegeket hozott a SAP migracios projektunkbe. Az egyuttmukodes gordulekenyen zajlott, es a projekt idoben, a tervezett koltsegvetesen belul valostult meg."
-        company="MOL Magyarorszag"
-        person="K. Peter"
-        role="IT Igazgato"
+        quote="A Prio Consulting csapata kiemelkedő szakmai tudást és projektmenedzsment képességeket hozott a SAP migrációs projektünkbe. Az együttműködés gördülékenyen zajlott, és a projekt időben, a tervezett költségvetésen belül valósult meg."
+        company="MOL Magyarország"
+        person="K. Péter"
+        role="IT igazgató"
       />
     </div>
   </section>
@@ -104,7 +104,7 @@ const iconMentor = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" 
   <!-- FAQ Section -->
   <section class="section section-light">
     <div class="container">
-      <h2 class="text-center section-heading">Gyakran Ismetelt Kerdesek</h2>
+      <h2 class="text-center section-heading">Gyakran Ismételt Kérdések</h2>
       <FAQ items={faqItems} />
     </div>
   </section>
@@ -112,10 +112,10 @@ const iconMentor = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" 
   <!-- CTA Section -->
   <section class="section section-dark cta-section">
     <div class="container text-center">
-      <h2>Keszen all a kovetkezo lepesre?</h2>
-      <p class="cta-description">Vegye fel velunk a kapcsolatot, es beszelgessunk projektje igenyeirol.</p>
+      <h2>Készen áll a következő lépésre?</h2>
+      <p class="cta-description">Vegye fel velünk a kapcsolatot, és beszélgessünk projektje igényeiről.</p>
       <a href="/kapcsolat/" class="btn-primary cta-button">
-        Kapcsolatfelvetel
+        Kapcsolatfelvétel
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>
     </div>
@@ -157,6 +157,11 @@ const iconMentor = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" 
     flex-direction: column;
     align-items: center;
     gap: var(--space-xs);
+  }
+
+  .stat-value {
+    display: flex;
+    align-items: baseline;
   }
 
   .stat-number {

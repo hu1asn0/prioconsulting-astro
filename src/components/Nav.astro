@@ -8,7 +8,7 @@ const currentPath = Astro.url.pathname;
 
 const navItems = lang === 'hu'
   ? [
-      { label: 'Szolgaltatasok', href: '/szolgaltatasok/' },
+      { label: 'Szolgáltatások', href: '/szolgaltatasok/' },
       { label: 'Blog', href: '/blog/' },
       { label: 'Kapcsolat', href: '/kapcsolat/' },
     ]
@@ -52,8 +52,8 @@ const langSwitchLabel = lang === 'hu' ? 'EN' : 'HU';
 
 <header class="nav-header">
   <nav class="container nav-container">
-    <a href={homePath} class="nav-logo" aria-label="PRIO Home">
-      <span class="logo-text">PRIO</span>
+    <a href={homePath} class="nav-logo" aria-label="PRIO CONSULTING Home">
+      <span class="logo-text">PRIO CONSULTING</span>
     </a>
 
     <ul class="nav-links" id="nav-links">

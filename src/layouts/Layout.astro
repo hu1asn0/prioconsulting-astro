@@ -51,6 +51,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       <slot />
     </main>
     <Footer lang={lang} />
+    <script>
+      const u='info',d='prioconsulting.hu',a=`${u}@${d}`;
+      document.querySelectorAll('.obf-email').forEach(el=>{
+        el.setAttribute('href',`mailto:${a}`);
+        el.textContent=a;
+      });
+    </script>
   </body>
 </html>
 

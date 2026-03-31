@@ -10,8 +10,8 @@ const currentYear = new Date().getFullYear();
 const links = lang === 'hu'
   ? {
       impressum: { label: 'Impresszum', href: '/impresszum/' },
-      privacy: { label: 'Adatvedelem', href: '/adatvedelem/' },
-      services: { label: 'Szolgaltatasok', href: '/szolgaltatasok/' },
+      privacy: { label: 'Adatvédelem', href: '/adatvedelem/' },
+      services: { label: 'Szolgáltatások', href: '/szolgaltatasok/' },
       blog: { label: 'Blog', href: '/blog/' },
       contact: { label: 'Kapcsolat', href: '/kapcsolat/' },
     }
@@ -24,10 +24,10 @@ const links = lang === 'hu'
     };
 
 const t = {
-  address: 'Wesselenyi u. 4, 1077 Budapest',
-  email: 'info@prioconsulting.hu',
-  nav: lang === 'hu' ? 'Navigacio' : 'Navigation',
-  legal: lang === 'hu' ? 'Jogi informaciok' : 'Legal',
+  address: 'Wesselényi utca 4., 1075 Budapest',
+  email: '',
+  nav: lang === 'hu' ? 'Navigáció' : 'Navigation',
+  legal: lang === 'hu' ? 'Jogi információk' : 'Legal',
   contactLabel: lang === 'hu' ? 'Kapcsolat' : 'Contact',
   copyright: `${currentYear} Prio Consulting Kft.`,
   rights: lang === 'hu' ? 'Minden jog fenntartva.' : 'All rights reserved.',
@@ -37,10 +37,10 @@ const t = {
 <footer class="footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <a href={lang === 'hu' ? '/' : '/en/'} class="footer-logo">PRIO</a>
+      <a href={lang === 'hu' ? '/' : '/en/'} class="footer-logo">PRIO CONSULTING</a>
       <p class="footer-tagline">
         {lang === 'hu'
-          ? 'Strategiai IT Projekt Menedzsment es Tanacsadas'
+          ? 'Stratégiai IT Projekt Menedzsment és Tanácsadás'
           : 'Strategic IT Project Management & Consulting'}
       </p>
     </div>
@@ -71,7 +71,7 @@ const t = {
         </li>
         <li class="footer-contact-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          <a href={`mailto:${t.email}`}>{t.email}</a>
+          <a id="footer-email" href="#">…</a>
         </li>
       </ul>
     </div>
@@ -82,6 +82,10 @@ const t = {
       <p>&copy; {t.copyright} {t.rights}</p>
     </div>
   </div>
+  <script>
+    const u='info',d='prioconsulting.hu',a=`${u}@${d}`,el=document.getElementById('footer-email');
+    if(el){el.href=`mailto:${a}`;el.textContent=a;}
+  </script>
 </footer>
 
 <style>

@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://prioconsulting.hu',
-  server: { host: true },
+  server: { host: true, port: 4322 },
 
   i18n: {
     defaultLocale: 'hu',
