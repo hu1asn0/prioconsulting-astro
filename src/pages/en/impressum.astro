@@ -1,0 +1,101 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+---
+
+<Layout
+  title="Impressum | Prio Consulting"
+  description="Prio Consulting Kft. legal information and company details."
+  lang="en"
+>
+  <Hero title="Impressum" />
+
+  <section class="section section-light">
+    <div class="container legal-content">
+      <h2>Company Details</h2>
+      <dl class="legal-details">
+        <dt>Company name</dt>
+        <dd>Prio Consulting Kft.</dd>
+
+        <dt>Registered office</dt>
+        <dd>1077 Budapest, Wesselenyi u. 4., Hungary</dd>
+
+        <dt>Company registration no.</dt>
+        <dd>01-09-XXXXXX (to be filled by owner)</dd>
+
+        <dt>Tax number</dt>
+        <dd>XXXXXXXX-X-XX (to be filled by owner)</dd>
+
+        <dt>Managing director</dt>
+        <dd>Andras Simon</dd>
+
+        <dt>Email</dt>
+        <dd><a href="mailto:info@prioconsulting.hu">info@prioconsulting.hu</a></dd>
+      </dl>
+
+      <h2>Hosting Provider</h2>
+      <dl class="legal-details">
+        <dt>Name</dt>
+        <dd>(to be filled by owner)</dd>
+
+        <dt>Address</dt>
+        <dd>(to be filled by owner)</dd>
+      </dl>
+
+      <h2>Copyright</h2>
+      <p>All content on this website (text, graphics, logos, images) is the intellectual property of Prio Consulting Kft. Any use requires prior written permission.</p>
+
+      <h2>Disclaimer</h2>
+      <p>Prio Consulting Kft. makes every effort to ensure that the information published on this website is accurate and up to date. However, no liability is accepted for the completeness, accuracy, or timeliness of the information.</p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .legal-content {
+    max-width: 800px;
+  }
+
+  .legal-content h2 {
+    margin-top: var(--space-2xl);
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-sm);
+    border-bottom: 2px solid var(--color-cta);
+  }
+
+  .legal-content h2:first-child {
+    margin-top: 0;
+  }
+
+  .legal-details {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: var(--space-sm) var(--space-xl);
+    margin-bottom: var(--space-xl);
+  }
+
+  @media (max-width: 480px) {
+    .legal-details {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .legal-details dt {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .legal-details dd {
+    color: var(--color-secondary);
+  }
+
+  .legal-details a {
+    color: var(--color-cta);
+    cursor: pointer;
+  }
+
+  .legal-content p {
+    color: var(--color-secondary);
+    margin-bottom: var(--space-lg);
+  }
+</style>

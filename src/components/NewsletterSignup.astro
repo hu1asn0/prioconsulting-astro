@@ -1,0 +1,45 @@
+---
+interface Props {
+  lang?: string;
+}
+
+const { lang = 'hu' } = Astro.props;
+
+const t = {
+  heading: lang === 'hu' ? 'Iratkozzon fel hirlevelunkre' : 'Subscribe to our newsletter',
+  description: lang === 'hu'
+    ? 'Kapjon heti osszefoglalot IT projekt menedzsment temakban.'
+    : 'Get weekly summaries on IT project management topics.',
+  placeholder: lang === 'hu' ? 'Email cim' : 'Email address',
+  button: lang === 'hu' ? 'Feliratkozas' : 'Subscribe',
+};
+---
+
+<section class="newsletter-section section section-dark">
+  <div class="container text-center">
+    <h2>{t.heading}</h2>
+    <p class="newsletter-desc">{t.description}</p>
+    <iframe
+      src="https://embeds.beehiiv.com/f1e0a576-3497-4a0b-8e3e-5e9f23a36b6d?slim=true"
+      data-test-id="beehiiv-embed"
+      height="52"
+      frameborder="0"
+      scrolling="no"
+      style="margin: 0 auto; border-radius: 8px; background-color: transparent; max-width: 480px; width: 100%;"
+      title={t.heading}
+    ></iframe>
+  </div>
+</section>
+
+<style>
+  .newsletter-section h2 {
+    margin-bottom: var(--space-md);
+  }
+
+  .newsletter-desc {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: var(--space-xl);
+    max-width: 500px;
+    margin-inline: auto;
+  }
+</style>

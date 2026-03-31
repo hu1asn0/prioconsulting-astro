@@ -1,0 +1,108 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+---
+
+<Layout
+  title="Privacy Policy | Prio Consulting"
+  description="Prio Consulting Kft. privacy policy and GDPR information."
+  lang="en"
+>
+  <Hero title="Privacy Policy" />
+
+  <section class="section section-light">
+    <div class="container legal-content">
+      <p class="last-updated">Last updated: March 2026</p>
+
+      <h2>1. Data Controller</h2>
+      <p>Prio Consulting Kft. (registered office: 1077 Budapest, Wesselenyi u. 4., Hungary, email: <a href="mailto:info@prioconsulting.hu">info@prioconsulting.hu</a>)</p>
+
+      <h2>2. Purpose and Legal Basis of Data Processing</h2>
+      <p>Personal data collected on this website (name, email address, message) is processed for the purpose of responding to contact requests and quote inquiries, based on the voluntary consent of the data subject (GDPR Article 6(1)(a)).</p>
+
+      <h2>3. Scope of Processed Data</h2>
+      <ul>
+        <li>Name</li>
+        <li>Email address</li>
+        <li>Message content</li>
+        <li>Inquiry type</li>
+      </ul>
+
+      <h2>4. Duration of Data Processing</h2>
+      <p>For 2 years from the date of contact, or until the data subject requests deletion, whichever comes first.</p>
+
+      <h2>5. Data Transfer</h2>
+      <p>Data submitted via the contact form is transmitted through Formspree Inc. (USA) servers. Formspree operates under the EU-US Data Privacy Framework.</p>
+
+      <h2>6. Rights of the Data Subject</h2>
+      <p>The data subject has the right to:</p>
+      <ul>
+        <li>Request information about their processed data</li>
+        <li>Request rectification of their data</li>
+        <li>Request erasure of their data</li>
+        <li>Request restriction of processing</li>
+        <li>Exercise the right to data portability</li>
+        <li>Withdraw consent at any time</li>
+      </ul>
+
+      <h2>7. Cookies</h2>
+      <p>This website uses only technically necessary cookies. Third-party cookies are not placed, except when using the Beehiiv newsletter subscription form.</p>
+
+      <h2>8. Complaint Handling</h2>
+      <p>The data subject may file a complaint with the Hungarian National Authority for Data Protection and Freedom of Information (NAIH):</p>
+      <ul>
+        <li>Address: 1055 Budapest, Falk Miksa u. 9-11., Hungary</li>
+        <li>Email: ugyfelszolgalat@naih.hu</li>
+        <li>Website: <a href="https://naih.hu" target="_blank" rel="noopener">naih.hu</a></li>
+      </ul>
+
+      <h2>9. Contact</h2>
+      <p>For data protection inquiries, please contact us at: <a href="mailto:info@prioconsulting.hu">info@prioconsulting.hu</a></p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .legal-content {
+    max-width: 800px;
+  }
+
+  .last-updated {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--space-2xl);
+    font-style: italic;
+  }
+
+  .legal-content h2 {
+    margin-top: var(--space-2xl);
+    margin-bottom: var(--space-md);
+    font-size: 1.375rem;
+  }
+
+  .legal-content p {
+    color: var(--color-secondary);
+    margin-bottom: var(--space-md);
+  }
+
+  .legal-content ul {
+    margin-bottom: var(--space-lg);
+    padding-left: var(--space-xl);
+    list-style: disc;
+  }
+
+  .legal-content li {
+    color: var(--color-secondary);
+    margin-bottom: var(--space-xs);
+    line-height: 1.6;
+  }
+
+  .legal-content a {
+    color: var(--color-cta);
+    cursor: pointer;
+  }
+
+  .legal-content a:hover {
+    color: var(--color-cta-hover);
+  }
+</style>

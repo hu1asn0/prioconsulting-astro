@@ -1,0 +1,158 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<Layout
+  title="Kapcsolat | Prio Consulting"
+  description="Vegye fel velunk a kapcsolatot. IT Projekt Menedzsment tanacsadas es konzultacio."
+  lang="hu"
+>
+  <Hero
+    title="Kapcsolat"
+    subtitle="Kerjen ingyenes konzultaciot, es beszelgessunk projektje igenyeirol."
+  />
+
+  <section class="section section-light">
+    <div class="container contact-grid">
+      <!-- Contact Form -->
+      <div class="contact-form-wrapper">
+        <h2>Irjon nekunk</h2>
+        <form action="https://formspree.io/f/xplaceholder" method="POST" class="contact-form">
+          <div class="form-group">
+            <label for="name">Nev</label>
+            <input type="text" id="name" name="name" class="input" required placeholder="Teljes nev" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" class="input" required placeholder="pelda@email.com" />
+          </div>
+          <div class="form-group">
+            <label for="inquiry">Erdeklodes tipusa</label>
+            <select id="inquiry" name="inquiry" class="select" required>
+              <option value="" disabled selected>Valasszon...</option>
+              <option value="projekt-menedzsment">IT Projekt Menedzsment</option>
+              <option value="automatizalas">Automatizalas</option>
+              <option value="mentoring">Mentoring es Coaching</option>
+              <option value="egyeb">Egyeb</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Uzenet</label>
+            <textarea id="message" name="message" class="textarea" required placeholder="Irja le roviden, miben segithetunk..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary submit-btn">
+            Uzenet kuldese
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h2>Elerhetosegek</h2>
+        <div class="info-cards">
+          <div class="info-card">
+            <div class="info-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4>Iroda</h4>
+              <p>Wesselenyi u. 4<br />1077 Budapest<br />Magyarorszag</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div>
+              <h4>Email</h4>
+              <p><a href="mailto:info@prioconsulting.hu">info@prioconsulting.hu</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--space-3xl);
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+    }
+  }
+
+  .contact-form-wrapper h2,
+  .contact-info h2 {
+    margin-bottom: var(--space-xl);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .submit-btn {
+    align-self: flex-start;
+    padding: 14px 32px;
+  }
+
+  .info-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .info-card {
+    display: flex;
+    gap: var(--space-lg);
+    align-items: flex-start;
+  }
+
+  .info-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(202, 138, 4, 0.1);
+    border-radius: var(--radius-md);
+    color: var(--color-cta);
+  }
+
+  .info-card h4 {
+    font-size: 1rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .info-card p {
+    font-size: 0.9375rem;
+    color: var(--color-secondary);
+    line-height: 1.6;
+  }
+
+  .info-card a {
+    color: var(--color-cta);
+    cursor: pointer;
+  }
+
+  .info-card a:hover {
+    color: var(--color-cta-hover);
+  }
+</style>

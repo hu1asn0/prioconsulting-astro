@@ -1,0 +1,108 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<Layout
+  title="Adatvedelmi Tajekoztato | Prio Consulting"
+  description="Prio Consulting Kft. adatvedelmi tajekoztato es GDPR szabalyzat."
+  lang="hu"
+>
+  <Hero title="Adatvedelmi Tajekoztato" />
+
+  <section class="section section-light">
+    <div class="container legal-content">
+      <p class="last-updated">Utolso frissites: 2026. marcius</p>
+
+      <h2>1. Az adatkezelo megnevezese</h2>
+      <p>Prio Consulting Kft. (szekhelye: 1077 Budapest, Wesselenyi u. 4., email: <a href="mailto:info@prioconsulting.hu">info@prioconsulting.hu</a>)</p>
+
+      <h2>2. Az adatkezeles celja es jogalapja</h2>
+      <p>A weboldalon gyujtott szemelyes adatok (nev, email cim, uzenet) kezelese a kapcsolatfelvetel es az ajanlatkeres megvalaszolasar celjabool tortenik, az erintett onkentes hozzajarulasa alapjan (GDPR 6. cikk (1) bek. a) pont).</p>
+
+      <h2>3. Kezelt adatok kore</h2>
+      <ul>
+        <li>Nev</li>
+        <li>Email cim</li>
+        <li>Uzenet tartalma</li>
+        <li>Erdeklodes tipusa</li>
+      </ul>
+
+      <h2>4. Az adatkezeles idotartama</h2>
+      <p>A kapcsolatfelveteol szamitott 2 evig, vagy az erintett torlesi kerelemig, amelyik korabban bekovetkezzik.</p>
+
+      <h2>5. Adattovabbitas</h2>
+      <p>A kapcsolati urlapon megadott adatok a Formspree Inc. (USA) szerveren keresztul kerulanek tovabbitasra. A Formspree az EU-US Data Privacy Framework keretein belul mukodik.</p>
+
+      <h2>6. Az erintett jogai</h2>
+      <p>Az erintett jogosult:</p>
+      <ul>
+        <li>Tajekoztatast kerni a kezelt adatairol</li>
+        <li>Adatai helyesbiteseot kerni</li>
+        <li>Adatai torleseot kerni</li>
+        <li>Adatkezeles korlatozasat kerni</li>
+        <li>Adathordozhatos-aghoz valo jogat gyakorolni</li>
+        <li>Hozzajarulast barmikor visszavonni</li>
+      </ul>
+
+      <h2>7. Cookie-k (sutik)</h2>
+      <p>A weboldal kizarolag technikai szempontbol szukseges cookie-kat hasznal. Harmadik fel altal kezelt cookie-k nem kerulnek elhelyezesre, kiveve a Beehiiv hirlevel feliratkozasi uerlap hasznalata eseten.</p>
+
+      <h2>8. Panaszkezelesi lehetoseg</h2>
+      <p>Az erintett panasszal a Nemzeti Adatvedelmi es Informacioszabadsag Hatosaghoz (NAIH) fordulhat:</p>
+      <ul>
+        <li>Cim: 1055 Budapest, Falk Miksa u. 9-11.</li>
+        <li>Email: ugyfelszolgalat@naih.hu</li>
+        <li>Weboldal: <a href="https://naih.hu" target="_blank" rel="noopener">naih.hu</a></li>
+      </ul>
+
+      <h2>9. Kapcsolat</h2>
+      <p>Adatvedelmi kerdesekkel kapcsolatban forduljon hozzank: <a href="mailto:info@prioconsulting.hu">info@prioconsulting.hu</a></p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .legal-content {
+    max-width: 800px;
+  }
+
+  .last-updated {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--space-2xl);
+    font-style: italic;
+  }
+
+  .legal-content h2 {
+    margin-top: var(--space-2xl);
+    margin-bottom: var(--space-md);
+    font-size: 1.375rem;
+  }
+
+  .legal-content p {
+    color: var(--color-secondary);
+    margin-bottom: var(--space-md);
+  }
+
+  .legal-content ul {
+    margin-bottom: var(--space-lg);
+    padding-left: var(--space-xl);
+    list-style: disc;
+  }
+
+  .legal-content li {
+    color: var(--color-secondary);
+    margin-bottom: var(--space-xs);
+    line-height: 1.6;
+  }
+
+  .legal-content a {
+    color: var(--color-cta);
+    cursor: pointer;
+  }
+
+  .legal-content a:hover {
+    color: var(--color-cta-hover);
+  }
+</style>

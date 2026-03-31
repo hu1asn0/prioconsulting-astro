@@ -1,0 +1,161 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<Layout
+  title="Szolgaltatasok | Prio Consulting"
+  description="IT Projekt Menedzsment, Automatizalas es Mentoring szolgaltatasok. Tapasztalt tanacsadas nagyvallalati projektekhez."
+  lang="hu"
+>
+  <Hero
+    title="Szolgaltatasaink"
+    subtitle="Atfogo IT projekt menedzsment megoldasok, amelyek segitik vallalata digitalis transzformaciojatr."
+  />
+
+  <!-- IT Project Management -->
+  <section class="section section-light">
+    <div class="container service-detail">
+      <div class="service-detail-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      </div>
+      <h2>IT Projekt Menedzsment</h2>
+      <p class="service-detail-lead">Nagyvallalati IT projektek professzionalis vezetese a tervezestol a sikeres bevezetesig.</p>
+      <div class="service-features">
+        <div class="feature">
+          <h3>SAP Migraciok</h3>
+          <p>SAP S/4HANA migracios projektek teljes eletciklus menedzsmentje. Kockazatkezeles, idoterv optimalizalas, stakeholder kommunikacio.</p>
+        </div>
+        <div class="feature">
+          <h3>CRM Bevezetes</h3>
+          <p>Salesforce, Microsoft Dynamics es egyeb CRM rendszerek bevezetesenek koordinalasa. Uzleti igeny felmerestol a felhasznaloi atadesig.</p>
+        </div>
+        <div class="feature">
+          <h3>ERP Projektek</h3>
+          <p>Valalati eroforras-tervezo rendszerek bevezetesenek es upgradejenek menedzselese. Folyamat-optimalizalas, change management.</p>
+        </div>
+        <div class="feature">
+          <h3>Agilis es Vizeses Modszertanok</h3>
+          <p>Rugalmas megkozelites: tiszta Agile, Waterfall, vagy hibrid modszertanok alkalmazasa a projekt jellegenek megfeleloen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Automation -->
+  <section class="section section-surface">
+    <div class="container service-detail">
+      <div class="service-detail-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+      </div>
+      <h2>Automatizalasi Projektek</h2>
+      <p class="service-detail-lead">Uzleti folyamatok automatizalasa, amely idot es koltseget takarit meg vallalata szamara.</p>
+      <div class="service-features">
+        <div class="feature">
+          <h3>Workflow Automatizalas</h3>
+          <p>Ismetlodo feladatok azonositasa es automatizalasa. Integracio meglevo rendszerekkel, API-k es iPaaS megoldasok.</p>
+        </div>
+        <div class="feature">
+          <h3>AI Integraciok</h3>
+          <p>Mesterseges intelligencia megoldasok tervezese es integracio meglevo uzleti folyamatokba. Chatbotok, dokumentum-feldolgozas, prediktiv analitika.</p>
+        </div>
+        <div class="feature">
+          <h3>Riporting Automatizalas</h3>
+          <p>Automatikus riport generalas, dashboard-ok es monitoring rendszerek kiepitese. Adatalapou dontest tamogatas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mentoring -->
+  <section class="section section-light">
+    <div class="container service-detail">
+      <div class="service-detail-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h2>Mentoring es Coaching</h2>
+      <p class="service-detail-lead">IT projekt menedzserek szemelyres szabott fejlesztese es tamogatasa.</p>
+      <div class="service-features">
+        <div class="feature">
+          <h3>Egyeni Coaching</h3>
+          <p>Szemelyre szabott coaching program IT projekt menedzserek szamara. Vezetoi kompetenciak, idogazdalkodas, konfliktuskezeles.</p>
+        </div>
+        <div class="feature">
+          <h3>Stakeholder Menedzsment</h3>
+          <p>Hatekony stakeholder kommunikacio es elvaras-kezeles technikak elsajatitasa. Tapasztalati workshop-ok.</p>
+        </div>
+        <div class="feature">
+          <h3>Csapat Mentoralas</h3>
+          <p>Projekt csapatok fejlesztese, csapatepites, agilis ceremoniakra felkeszites. Retrospektiv facilitalas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-dark cta-section">
+    <div class="container text-center">
+      <h2>Erdekli valamelyik szolgaltatasunk?</h2>
+      <p class="cta-desc">Vegye fel velunk a kapcsolatot egy ingyenes konzultacioert.</p>
+      <a href="/kapcsolat/" class="btn-primary">
+        Kapcsolatfelvetel
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .service-detail {
+    max-width: 800px;
+  }
+
+  .service-detail-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(202, 138, 4, 0.1);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-lg);
+    color: var(--color-cta);
+  }
+
+  .service-detail h2 {
+    margin-bottom: var(--space-md);
+  }
+
+  .service-detail-lead {
+    font-size: 1.25rem;
+    color: var(--color-secondary);
+    margin-bottom: var(--space-2xl);
+    line-height: 1.6;
+  }
+
+  .service-features {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  .feature h3 {
+    margin-bottom: var(--space-sm);
+    color: var(--color-primary);
+  }
+
+  .feature p {
+    color: var(--color-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .cta-section h2 {
+    margin-bottom: var(--space-md);
+  }
+
+  .cta-desc {
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: var(--space-xl);
+    font-size: 1.125rem;
+  }
+</style>

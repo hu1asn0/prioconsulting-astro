@@ -1,0 +1,253 @@
+---
+interface Props {
+  lang?: string;
+}
+
+const { lang = 'hu' } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+const navItems = lang === 'hu'
+  ? [
+      { label: 'Szolgaltatasok', href: '/szolgaltatasok/' },
+      { label: 'Blog', href: '/blog/' },
+      { label: 'Kapcsolat', href: '/kapcsolat/' },
+    ]
+  : [
+      { label: 'Services', href: '/en/services/' },
+      { label: 'Blog', href: '/en/blog/' },
+      { label: 'Contact', href: '/en/contact/' },
+    ];
+
+const homePath = lang === 'hu' ? '/' : '/en/';
+
+function getLangSwitchHref() {
+  if (lang === 'hu') {
+    // Map HU paths to EN paths
+    const map: Record<string, string> = {
+      '/': '/en/',
+      '/szolgaltatasok/': '/en/services/',
+      '/blog/': '/en/blog/',
+      '/kapcsolat/': '/en/contact/',
+      '/impresszum/': '/en/impressum/',
+      '/adatvedelem/': '/en/privacy/',
+    };
+    return map[currentPath] || `/en${currentPath}`;
+  } else {
+    // Map EN paths to HU paths
+    const map: Record<string, string> = {
+      '/en/': '/',
+      '/en/services/': '/szolgaltatasok/',
+      '/en/blog/': '/blog/',
+      '/en/contact/': '/kapcsolat/',
+      '/en/impressum/': '/impresszum/',
+      '/en/privacy/': '/adatvedelem/',
+    };
+    return map[currentPath] || currentPath.replace(/^\/en/, '') || '/';
+  }
+}
+
+const langSwitchHref = getLangSwitchHref();
+const langSwitchLabel = lang === 'hu' ? 'EN' : 'HU';
+---
+
+<header class="nav-header">
+  <nav class="container nav-container">
+    <a href={homePath} class="nav-logo" aria-label="PRIO Home">
+      <span class="logo-text">PRIO</span>
+    </a>
+
+    <ul class="nav-links" id="nav-links">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class:list={['nav-link', { active: currentPath === item.href }]}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+      <li>
+        <a href={langSwitchHref} class="nav-lang-switch" aria-label={`Switch to ${langSwitchLabel}`}>
+          {langSwitchLabel}
+        </a>
+      </li>
+    </ul>
+
+    <button
+      class="nav-hamburger"
+      id="nav-hamburger"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line class="hamburger-line hamburger-line-1" x1="3" y1="6" x2="21" y2="6" />
+        <line class="hamburger-line hamburger-line-2" x1="3" y1="12" x2="21" y2="12" />
+        <line class="hamburger-line hamburger-line-3" x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    </button>
+  </nav>
+</header>
+
+<style>
+  .nav-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(202, 138, 4, 0.15);
+  }
+
+  .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: var(--space-md);
+  }
+
+  .nav-logo {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .logo-text {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-white);
+    letter-spacing: 0.15em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+    list-style: none;
+  }
+
+  .nav-link {
+    font-family: var(--font-heading);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color var(--transition-base);
+    cursor: pointer;
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-cta);
+    transition: width var(--transition-base);
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--color-cta);
+  }
+
+  .nav-link.active::after,
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .nav-lang-switch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-cta);
+    border: 1.5px solid var(--color-cta);
+    border-radius: var(--radius-sm);
+    padding: 4px 10px;
+    text-decoration: none;
+    transition: all var(--transition-base);
+    cursor: pointer;
+    letter-spacing: 0.05em;
+  }
+
+  .nav-lang-switch:hover {
+    background: var(--color-cta);
+    color: var(--color-primary);
+  }
+
+  .nav-hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--color-white);
+    cursor: pointer;
+    padding: var(--space-xs);
+  }
+
+  .hamburger-line {
+    transition: all var(--transition-base);
+    transform-origin: center;
+  }
+
+  @media (max-width: 768px) {
+    .nav-hamburger {
+      display: flex;
+    }
+
+    .nav-links {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100dvh;
+      background: var(--color-primary);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: var(--space-3xl) var(--space-xl);
+      gap: var(--space-lg);
+      transition: right var(--transition-slow);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .nav-links.open {
+      right: 0;
+    }
+
+    .nav-link {
+      font-size: 1.125rem;
+    }
+  }
+</style>
+
+<script>
+  const hamburger = document.getElementById('nav-hamburger');
+  const navLinks = document.getElementById('nav-links');
+
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // Close menu when clicking a link
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close menu on outside click
+    document.addEventListener('click', (e) => {
+      if (!navLinks.contains(e.target as Node) && !hamburger.contains(e.target as Node)) {
+        navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+</script>

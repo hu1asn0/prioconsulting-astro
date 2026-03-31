@@ -1,0 +1,184 @@
+---
+interface Props {
+  lang?: string;
+}
+
+const { lang = 'hu' } = Astro.props;
+
+const currentYear = new Date().getFullYear();
+
+const links = lang === 'hu'
+  ? {
+      impressum: { label: 'Impresszum', href: '/impresszum/' },
+      privacy: { label: 'Adatvedelem', href: '/adatvedelem/' },
+      services: { label: 'Szolgaltatasok', href: '/szolgaltatasok/' },
+      blog: { label: 'Blog', href: '/blog/' },
+      contact: { label: 'Kapcsolat', href: '/kapcsolat/' },
+    }
+  : {
+      impressum: { label: 'Impressum', href: '/en/impressum/' },
+      privacy: { label: 'Privacy Policy', href: '/en/privacy/' },
+      services: { label: 'Services', href: '/en/services/' },
+      blog: { label: 'Blog', href: '/en/blog/' },
+      contact: { label: 'Contact', href: '/en/contact/' },
+    };
+
+const t = {
+  address: 'Wesselenyi u. 4, 1077 Budapest',
+  email: 'info@prioconsulting.hu',
+  nav: lang === 'hu' ? 'Navigacio' : 'Navigation',
+  legal: lang === 'hu' ? 'Jogi informaciok' : 'Legal',
+  contactLabel: lang === 'hu' ? 'Kapcsolat' : 'Contact',
+  copyright: `${currentYear} Prio Consulting Kft.`,
+  rights: lang === 'hu' ? 'Minden jog fenntartva.' : 'All rights reserved.',
+};
+---
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href={lang === 'hu' ? '/' : '/en/'} class="footer-logo">PRIO</a>
+      <p class="footer-tagline">
+        {lang === 'hu'
+          ? 'Strategiai IT Projekt Menedzsment es Tanacsadas'
+          : 'Strategic IT Project Management & Consulting'}
+      </p>
+    </div>
+
+    <div class="footer-column">
+      <h4>{t.nav}</h4>
+      <ul>
+        <li><a href={links.services.href}>{links.services.label}</a></li>
+        <li><a href={links.blog.href}>{links.blog.label}</a></li>
+        <li><a href={links.contact.href}>{links.contact.label}</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>{t.legal}</h4>
+      <ul>
+        <li><a href={links.impressum.href}>{links.impressum.label}</a></li>
+        <li><a href={links.privacy.href}>{links.privacy.label}</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>{t.contactLabel}</h4>
+      <ul>
+        <li class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>{t.address}</span>
+        </li>
+        <li class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <a href={`mailto:${t.email}`}>{t.email}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; {t.copyright} {t.rights}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-primary);
+    color: rgba(255, 255, 255, 0.75);
+    padding-top: var(--space-3xl);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+    gap: var(--space-2xl);
+  }
+
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .footer-logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-white);
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .footer-logo:hover {
+    color: var(--color-cta);
+  }
+
+  .footer-tagline {
+    margin-top: var(--space-sm);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .footer-column h4 {
+    font-family: var(--font-heading);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-white);
+    margin-bottom: var(--space-md);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .footer-column ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .footer-column a {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    transition: color var(--transition-base);
+    cursor: pointer;
+  }
+
+  .footer-column a:hover {
+    color: var(--color-cta);
+  }
+
+  .footer-contact-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.9375rem;
+  }
+
+  .footer-contact-item svg {
+    flex-shrink: 0;
+    color: var(--color-cta);
+  }
+
+  .footer-bottom {
+    margin-top: var(--space-2xl);
+    padding-block: var(--space-lg);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer-bottom p {
+    font-size: 0.875rem;
+    text-align: center;
+  }
+</style>

@@ -1,0 +1,72 @@
+---
+interface Props {
+  quote: string;
+  company: string;
+  person: string;
+  role: string;
+}
+
+const { quote, company, person, role } = Astro.props;
+---
+
+<blockquote class="testimonial">
+  <div class="testimonial-quote-icon" aria-hidden="true">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+  </div>
+  <p class="testimonial-text">{quote}</p>
+  <footer class="testimonial-footer">
+    <div class="testimonial-author">
+      <span class="testimonial-person">{person}</span>
+      <span class="testimonial-role">{role}, {company}</span>
+    </div>
+  </footer>
+</blockquote>
+
+<style>
+  .testimonial {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+    border-left: 4px solid var(--color-cta);
+    box-shadow: var(--shadow-sm);
+    max-width: 700px;
+    margin-inline: auto;
+    position: relative;
+  }
+
+  .testimonial-quote-icon {
+    color: rgba(202, 138, 4, 0.15);
+    margin-bottom: var(--space-md);
+  }
+
+  .testimonial-text {
+    font-size: 1.125rem;
+    font-style: italic;
+    color: var(--color-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-lg);
+  }
+
+  .testimonial-footer {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .testimonial-author {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testimonial-person {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--color-primary);
+    font-size: 1rem;
+  }
+
+  .testimonial-role {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+  }
+</style>
