@@ -8,11 +8,13 @@ const currentPath = Astro.url.pathname;
 
 const navItems = lang === 'hu'
   ? [
+      { label: 'Rólam', href: '/rolam/' },
       { label: 'Szolgáltatások', href: '/szolgaltatasok/' },
       { label: 'Blog', href: '/blog/' },
       { label: 'Kapcsolat', href: '/kapcsolat/' },
     ]
   : [
+      { label: 'About', href: '/en/about/' },
       { label: 'Services', href: '/en/services/' },
       { label: 'Blog', href: '/en/blog/' },
       { label: 'Contact', href: '/en/contact/' },
@@ -25,6 +27,7 @@ function getLangSwitchHref() {
     // Map HU paths to EN paths
     const map: Record<string, string> = {
       '/': '/en/',
+      '/rolam/': '/en/about/',
       '/szolgaltatasok/': '/en/services/',
       '/blog/': '/en/blog/',
       '/kapcsolat/': '/en/contact/',
@@ -36,6 +39,7 @@ function getLangSwitchHref() {
     // Map EN paths to HU paths
     const map: Record<string, string> = {
       '/en/': '/',
+      '/en/about/': '/rolam/',
       '/en/services/': '/szolgaltatasok/',
       '/en/blog/': '/blog/',
       '/en/contact/': '/kapcsolat/',

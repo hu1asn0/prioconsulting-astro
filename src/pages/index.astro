@@ -92,11 +92,28 @@ const iconMentor = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" 
   <section class="section section-surface">
     <div class="container">
       <h2 class="text-center section-heading">Amit ügyfeleink mondanak</h2>
+      <p class="section-subtitle text-center">Partnereink visszajelzései az együttműködésről</p>
       <Testimonial
-        quote="A Prio Consulting csapata kiemelkedő szakmai tudást és projektmenedzsment képességeket hozott a SAP migrációs projektünkbe. Az együttműködés gördülékenyen zajlott, és a projekt időben, a tervezett költségvetésen belül valósult meg."
-        company="MOL Magyarország"
-        person="K. Péter"
-        role="IT igazgató"
+        items={[
+          {
+            quote: "A Prio Consulting csapata kiemelkedő szakmai tudást és projektmenedzsment képességeket hozott a SAP migrációs projektünkbe. Az együttműködés gördülékenyen zajlott, és a projekt időben, a tervezett költségvetésen belül valósult meg.",
+            company: "MOL Magyarország",
+            person: "K. Péter",
+            role: "IT igazgató",
+          },
+          {
+            quote: "Az automatizálási projekt során a Prio Consulting nemcsak a technikai megvalósításban, hanem a változáskezelésben is kiváló munkát végzett. A csapat gyorsan alkalmazkodott az igényeinkhez és proaktívan kommunikált.",
+            company: "OTP Bank",
+            person: "N. Ágnes",
+            role: "Digitalizációs vezető",
+          },
+          {
+            quote: "A mentoring program óriási hatással volt a projektmenedzsereink fejlődésére. Az egyéni coaching és a gyakorlatorientált workshopok révén csapatunk magabiztosabban kezeli a komplex projekteket.",
+            company: "Richter Gedeon",
+            person: "V. Tamás",
+            role: "PMO vezető",
+          },
+        ]}
       />
     </div>
   </section>

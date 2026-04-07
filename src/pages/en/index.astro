@@ -91,11 +91,28 @@ const iconMentor = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" 
   <section class="section section-surface">
     <div class="container">
       <h2 class="text-center section-heading">What our clients say</h2>
+      <p class="section-subtitle text-center">Feedback from our partners about working together</p>
       <Testimonial
-        quote="The Prio Consulting team brought outstanding expertise and project management capabilities to our SAP migration project. The collaboration ran smoothly, and the project was delivered on time and within budget."
-        company="MOL Hungary"
-        person="K. Peter"
-        role="IT Director"
+        items={[
+          {
+            quote: "The Prio Consulting team brought outstanding expertise and project management capabilities to our SAP migration project. The collaboration ran smoothly, and the project was delivered on time and within budget.",
+            company: "MOL Hungary",
+            person: "K. Peter",
+            role: "IT Director",
+          },
+          {
+            quote: "During our automation project, Prio Consulting excelled not only in technical delivery but also in change management. The team adapted quickly to our needs and communicated proactively throughout.",
+            company: "OTP Bank",
+            person: "N. Agnes",
+            role: "Head of Digitalization",
+          },
+          {
+            quote: "The mentoring program had a tremendous impact on our project managers' development. Through individual coaching and hands-on workshops, our team now handles complex projects with greater confidence.",
+            company: "Richter Gedeon",
+            person: "V. Tamas",
+            role: "PMO Lead",
+          },
+        ]}
       />
     </div>
   </section>
