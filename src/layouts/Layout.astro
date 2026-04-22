@@ -9,6 +9,7 @@ interface Props {
   description?: string;
   lang?: string;
   ogImage?: string;
+  pageSchema?: object | object[];
 }
 
 const {
@@ -16,6 +17,7 @@ const {
   description = 'Prio Consulting — Strategiai IT Projekt Menedzsment',
   lang = 'hu',
   ogImage = '/favicon.svg',
+  pageSchema,
 } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL(ogImage, Astro.site);
@@ -61,6 +63,7 @@ const ogImageURL = new URL(ogImage, Astro.site);
 
     <!-- JSON-LD: Organization + LocalBusiness (minden oldalon) -->
     <JsonLd data={[organization, localBusiness]} />
+    {pageSchema && <JsonLd data={pageSchema} />}
   </head>
   <body>
     <Nav lang={lang} />
