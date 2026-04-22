@@ -1,15 +1,26 @@
 ---
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import JsonLd from '../components/JsonLd.astro';
+import { organization, localBusiness } from '../data/schema';
 
 interface Props {
   title: string;
   description?: string;
   lang?: string;
+  ogImage?: string;
+  pageSchema?: object | object[];
 }
 
-const { title, description = 'Prio Consulting — Strategiai IT Projekt Menedzsment', lang = 'hu' } = Astro.props;
+const {
+  title,
+  description = 'Prio Consulting — Strategiai IT Projekt Menedzsment',
+  lang = 'hu',
+  ogImage = '/favicon.svg',
+  pageSchema,
+} = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(ogImage, Astro.site);
 ---
 
 <!doctype html>
@@ -29,6 +40,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:locale" content={lang === 'hu' ? 'hu_HU' : 'en_US'} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
 
     <!-- Hreflang -->
     {lang === 'hu' ? (
@@ -44,6 +60,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     )}
 
     <title>{title}</title>
+
+    <!-- JSON-LD: Organization + LocalBusiness (minden oldalon) -->
+    <JsonLd data={[organization, localBusiness]} />
+    {pageSchema && <JsonLd data={pageSchema} />}
   </head>
   <body>
     <Nav lang={lang} />

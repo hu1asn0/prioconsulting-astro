@@ -2,12 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Testimonial from '../components/Testimonial.astro';
+import { person } from '../data/schema';
 ---
 
 <Layout
   title="Rólam | Prio Consulting"
   description="Simon András — IT Projekt Menedzser és AI Integrátor. 15+ év tapasztalat nagyvállalati IT projektek vezetésében."
   lang="hu"
+  pageSchema={person}
 >
   <Hero
     title="Rólam"

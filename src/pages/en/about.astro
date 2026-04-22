@@ -2,12 +2,14 @@
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/Hero.astro';
 import Testimonial from '../../components/Testimonial.astro';
+import { person } from '../../data/schema';
 ---
 
 <Layout
   title="About | Prio Consulting"
   description="Andras Simon — IT Project Manager & AI Integrator. 15+ years of experience leading enterprise IT projects."
   lang="en"
+  pageSchema={person}
 >
   <Hero
     title="About"

@@ -1,12 +1,48 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/Hero.astro';
+import { SITE_URL } from '../../data/schema';
+
+const services = [
+  {
+    name: 'IT Project Management',
+    description: 'Professional management of enterprise IT projects from planning to successful go-live. SAP IS-U / ECC / S/4HANA migrations, CRM and ERP rollouts, Agile and Waterfall methodologies.',
+    serviceType: 'IT Project Management',
+    slug: 'it-project-management',
+  },
+  {
+    name: 'Automation Projects',
+    description: 'Business process automation across workflow, AI integration, and reporting. Saves time and cost for your organization.',
+    serviceType: 'Business Process Automation',
+    slug: 'automation',
+  },
+  {
+    name: 'Mentoring & Coaching',
+    description: 'Tailored development for IT project managers: individual coaching, stakeholder management, team mentoring.',
+    serviceType: 'IT Project Management Coaching',
+    slug: 'mentoring',
+  },
+];
+
+const servicesSchema = services.map((s) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${SITE_URL}/en/services/#${s.slug}`,
+  name: s.name,
+  description: s.description,
+  serviceType: s.serviceType,
+  provider: { '@id': `${SITE_URL}#business` },
+  areaServed: { '@type': 'Country', name: 'Hungary' },
+  inLanguage: 'en',
+  url: `${SITE_URL}/en/services/`,
+}));
 ---
 
 <Layout
   title="Services | Prio Consulting"
   description="IT Project Management, Automation, and Mentoring services. Experienced consulting for enterprise projects."
   lang="en"
+  pageSchema={servicesSchema}
 >
   <Hero
     title="Our Services"

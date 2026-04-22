@@ -1,12 +1,47 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+import { SITE_URL } from '../data/schema';
+
+const services = [
+  {
+    name: 'IT Projekt Menedzsment',
+    description: 'Nagyvállalati IT projektek professzionális vezetése a tervezéstől a sikeres bevezetésig. SAP IS-U / ECC / S/4HANA migrációk, CRM és ERP bevezetések, Agilis és vízesés módszertanok.',
+    serviceType: 'IT Project Management',
+    slug: 'it-projekt-menedzsment',
+  },
+  {
+    name: 'Automatizálási projektek',
+    description: 'Üzleti folyamatok automatizálása workflow, AI integrációk és riporting területén. Időt és költséget takarít meg vállalata számára.',
+    serviceType: 'Business Process Automation',
+    slug: 'automatizalas',
+  },
+  {
+    name: 'Mentoring és Coaching',
+    description: 'IT projektmenedzserek személyre szabott fejlesztése: egyéni coaching, stakeholder menedzsment, csapat mentorálás.',
+    serviceType: 'IT Project Management Coaching',
+    slug: 'mentoring',
+  },
+];
+
+const servicesSchema = services.map((s) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${SITE_URL}/szolgaltatasok/#${s.slug}`,
+  name: s.name,
+  description: s.description,
+  serviceType: s.serviceType,
+  provider: { '@id': `${SITE_URL}#business` },
+  areaServed: { '@type': 'Country', name: 'Hungary' },
+  url: `${SITE_URL}/szolgaltatasok/`,
+}));
 ---
 
 <Layout
   title="Szolgáltatások | Prio Consulting"
   description="IT Projekt Menedzsment, Automatizálás és Mentoring szolgáltatások. Tapasztalt tanácsadás nagyvállalati projektekhez."
   lang="hu"
+  pageSchema={servicesSchema}
 >
   <Hero
     title="Szolgáltatásaink"
