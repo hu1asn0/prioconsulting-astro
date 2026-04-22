@@ -3,7 +3,7 @@ interface TestimonialItem {
   quote: string;
   company: string;
   person: string;
-  role: string;
+  role?: string;
 }
 
 interface Props {
@@ -19,7 +19,7 @@ const { quote, company, person, role, items } = Astro.props;
 // Support both single testimonial (backward compat) and multiple
 const testimonials: TestimonialItem[] = items
   ? items
-  : (quote && company && person && role)
+  : (quote && company && person)
     ? [{ quote, company, person, role }]
     : [];
 ---
@@ -34,7 +34,7 @@ const testimonials: TestimonialItem[] = items
       <footer class="testimonial-footer">
         <div class="testimonial-author">
           <span class="testimonial-person">{t.person}</span>
-          <span class="testimonial-role">{t.role}, {t.company}</span>
+          <span class="testimonial-role">{[t.role, t.company].filter(Boolean).join(', ')}</span>
         </div>
       </footer>
     </blockquote>
