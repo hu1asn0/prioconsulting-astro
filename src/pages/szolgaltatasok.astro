@@ -127,6 +127,27 @@ const servicesSchema = services.map((s) => ({
     </div>
   </section>
 
+  <!-- Applied AI pillar link -->
+  <section class="section section-surface">
+    <div class="container service-detail">
+      <div class="service-detail-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0-3 3v1a3 3 0 0 0 0 6v1a3 3 0 0 0 3 3v1a3 3 0 0 0 6 0v-1a3 3 0 0 0 3-3v-1a3 3 0 0 0 0-6V9a3 3 0 0 0-3-3V5a3 3 0 0 0-3-3Z"/><path d="M12 5v14"/></svg>
+      </div>
+      <h2>Applied AI</h2>
+      <p class="service-detail-lead">Külön szakterület: mesterséges intelligencia bevezetése vállalati folyamatokba, projektmenedzsment-fegyelemmel.</p>
+      <p class="applied-ai-teaser">
+        Dokumentumfeldolgozás és belső keresés, automatizált riportálás, AI-rendszerek monitoringja,
+        valamint a saját szerveres és felhős futtatás közötti döntés. A munka négy, külön dönthető
+        szakaszban halad: felmérés, kísérleti szakasz, éles üzem, átadás. A részletes bemutatót
+        önálló oldalon olvashatja.
+      </p>
+      <a href="/applied-ai/" class="btn-primary">
+        Applied AI részletesen
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="section section-dark cta-section">
     <div class="container text-center">
@@ -182,6 +203,13 @@ const servicesSchema = services.map((s) => ({
     color: var(--color-secondary);
     font-size: 1rem;
     line-height: 1.7;
+  }
+
+  .applied-ai-teaser {
+    color: var(--color-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: var(--space-xl);
   }
 
   .cta-section h2 {
