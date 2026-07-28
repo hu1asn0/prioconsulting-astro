@@ -70,11 +70,15 @@ log "Switching to deploy branch..."
 git checkout deploy >> "$LOG" 2>&1
 
 # Clean old dist files (keep .git, src, node_modules, etc.)
+# NOTE: .env and the logs live untracked in the repo root — without an
+# explicit exemption this find deletes them, which silently disabled the
+# cPanel pull hook once the token file was wiped mid-deploy.
 find . -maxdepth 1 \
     -not -name '.git' -not -name '.' -not -name '..' \
     -not -name 'src' -not -name 'node_modules' -not -name 'dist' \
     -not -name 'package.json' -not -name 'package-lock.json' \
     -not -name 'astro.config.mjs' -not -name 'tsconfig.json' \
+    -not -name '.env' -not -name '*.log' -not -name 'sync-beehiiv.sh' \
     -exec rm -rf {} + 2>/dev/null || true
 
 # Copy new build output
@@ -85,7 +89,7 @@ cp -r /tmp/prio-deploy-dist/* .
 # used to trigger a "nothing added to commit" failure that killed the script
 # mid-deploy via set -e, stranding the working tree on the deploy branch.
 git add -A
-git reset HEAD src/ node_modules/ dist/ package.json package-lock.json astro.config.mjs tsconfig.json 2>/dev/null || true
+git reset HEAD src/ node_modules/ dist/ package.json package-lock.json astro.config.mjs tsconfig.json .env ./*.log sync-beehiiv.sh 2>/dev/null || true
 if git diff --cached --quiet; then
     log "No changes — skipping commit"
 else
