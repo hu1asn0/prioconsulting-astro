@@ -11,6 +11,11 @@ export NVM_DIR="$HOME/.nvm"
 
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" >> "$LOG"; }
 
+# cPanel API credentials (CPANEL_HOST/USER/TOKEN/REPO_ROOT/BRANCH) — optional
+if [ -f "$SCRIPT_DIR/.env" ]; then
+    set -a; . "$SCRIPT_DIR/.env"; set +a
+fi
+
 # Branch guard: this script only exists on main — if a previous run died
 # mid-deploy, the working tree is stuck on the deploy branch and cron fails
 # silently (exit 127). Try to self-heal, otherwise fail loudly.
@@ -87,6 +92,19 @@ else
     git commit -m "deploy: beehiiv sync $(date '+%Y-%m-%d %H:%M')" >> "$LOG" 2>&1
     git push origin deploy >> "$LOG" 2>&1
     log "Deployed to origin/deploy"
+
+    # Best-effort cPanel pull trigger. Requires the server IP to be
+    # whitelisted in Imunify360 on the host — until then this logs the
+    # denial but must not fail the sync.
+    if [ -n "${CPANEL_TOKEN:-}" ]; then
+        _cpanel_resp=$(curl -sG --max-time 30 -A "Mozilla/5.0" \
+            -H "Accept: application/json" \
+            -H "Authorization: cpanel ${CPANEL_USER}:${CPANEL_TOKEN}" \
+            --data-urlencode "repository_root=${CPANEL_REPO_ROOT}" \
+            --data-urlencode "branch=${CPANEL_BRANCH}" \
+            "https://${CPANEL_HOST}:2083/execute/VersionControl/update" || true)
+        log "cPanel pull response: $(echo "$_cpanel_resp" | tr -d '\n' | head -c 300)"
+    fi
 fi
 
 # Step 4: Switch back and restore
