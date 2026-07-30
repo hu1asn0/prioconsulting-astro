@@ -1,0 +1,864 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import FAQ from '../../components/FAQ.astro';
+import { SITE_URL } from '../../data/schema';
+
+const faqItems = [
+  {
+    question: 'How long before the first results show?',
+    answer:
+      'The assessment takes 2–3 weeks, and the pilot a further 6–8. At the end of the pilot there is no presentation, but a running system and a measurement record you can use to decide whether it goes into production. If the assessment concludes that the process can be improved without AI, I will say so, and we stop there.',
+  },
+  {
+    question: 'Do we have to move our data to the cloud?',
+    answer:
+      'No. Open-weight models run on your own servers today, and for many internal tasks they are good enough. Cloud models are typically more accurate and require no operational effort. The choice comes down to data sensitivity and cost, and we settle it during the assessment, not in advance.',
+  },
+  {
+    question: 'We have nobody who understands AI. Is that a blocker?',
+    answer:
+      'Running the system does not call for an AI specialist; a team at system administrator level is enough. What it does call for is a business-side owner of the process, someone who can judge whether a given answer is good or not. That person validates the evaluation set, and without them there is no measurable quality.',
+  },
+  {
+    question: 'What does this cost, and what drives the cost?',
+    answer:
+      'For most internal processes, model usage is the smaller item. The bulk of the cost sits in the assessment, the data preparation and the integration — that is, in human work. That is why I quote separately for each phase: after the assessment you already know what the pilot costs, and after the pilot what production costs.',
+  },
+  {
+    question: 'What happens if the system gives a wrong answer?',
+    answer:
+      'That it is sometimes wrong is not a defect but a property of the technology. The question is whether the process can live with it. This is why every production system gets source citations, a measurable error rate, and a human approval point wherever being wrong is expensive. A process that cannot bear that is one we do not automate.',
+  },
+  {
+    question: 'Do you bring a development team, or only manage the project?',
+    answer:
+      'I primarily take on project management and architecture decisions, while the implementation is picked up by your own team or by a developer brought in for it. My role is to keep the decisions well founded, the delivery traceable, and to make sure the system ends up in your team’s hands at the end.',
+  },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${SITE_URL}/en/applied-ai/#service`,
+  name: 'Applied AI Project Management',
+  serviceType: 'Applied AI Project Management',
+  description:
+    'Bringing artificial intelligence into enterprise processes with project management discipline: assessment, pilot, production, handover. Document processing and search (RAG), automated reporting, monitoring, on-premise and cloud operations.',
+  provider: { '@id': `${SITE_URL}#business` },
+  areaServed: [
+    { '@type': 'Country', name: 'Hungary' },
+    { '@type': 'AdministrativeArea', name: 'European Union' },
+  ],
+  inLanguage: 'en',
+  url: `${SITE_URL}/en/applied-ai/`,
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Applied AI capability areas',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Document processing and internal search (RAG)',
+          description:
+            'Question answering and search built on your own document base, with source citations, permission handling and measurable answer quality.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Automated reporting and decision support',
+          description:
+            'Machine generation of recurring reports from several data sources, with a natural language summary and scheduled delivery.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Monitoring and operation of AI systems',
+          description:
+            'Continuous measurement of runtime, cost and answer quality, with alerting and maintenance of evaluation sets.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'On-premise versus cloud architecture decision',
+          description:
+            'Comparison of self-hosted and cloud model execution against data sensitivity, cost and operational burden.',
+        },
+      },
+    ],
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${SITE_URL}/en/applied-ai/#faq`,
+  inLanguage: 'en',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<Layout
+  title="Applied AI: artificial intelligence with project discipline | Prio Consulting"
+  description="Bringing AI into enterprise processes with fifteen years of IT project management experience. Assessment, pilot, production, handover. Document processing, reporting automation, on-premise or cloud."
+  lang="en"
+  pageSchema={[serviceSchema, faqSchema]}
+>
+  <Hero
+    title="Applied AI"
+    subtitle="Artificial intelligence in enterprise operations, delivered with project management discipline: from assessment through production to handover."
+    ctaText="Request an assessment"
+    ctaLink="/en/contact/"
+  />
+
+  <!-- 1. What applied AI means -->
+  <section class="section section-light">
+    <div class="container pillar-content">
+      <h2>What “applied AI” means in practice</h2>
+      <p>
+        Applied artificial intelligence is neither a research field nor model development. It fits
+        an existing language model into one specific workflow so that the workflow becomes
+        measurably faster, cheaper or more accurate. We do not train the model: we take one that
+        exists and build around it what makes it usable.
+      </p>
+      <p>
+        Most of the work therefore sits somewhere other than the model — where it has always sat in
+        an IT project: data quality, access rights, integration, testing, operations. For an
+        internal document search, choosing the model takes a few days; clarifying the permission
+        rules can take weeks. That ratio rarely reverses.
+      </p>
+      <p>
+        This is why the same rules apply here as to an SAP rollout or a data migration: scope,
+        milestones, acceptance criteria, a test plan, an accountable owner on the business side, a
+        handover plan. Where those are missing, the novelty of the technology saves nothing.
+      </p>
+
+      <div class="contrast-grid">
+        <div class="contrast-card contrast-no">
+          <h3>What it is not about</h3>
+          <ul>
+            <li>Training a foundation model from scratch</li>
+            <li>An all-encompassing “AI strategy” with no concrete process behind it</li>
+            <li>A chatbot on the website because a competitor has one</li>
+            <li>A demo that works on hand-picked examples but not on live data</li>
+          </ul>
+        </div>
+        <div class="contrast-card contrast-yes">
+          <h3>What it is about</h3>
+          <ul>
+            <li>Picking one painful, repetitive process and measuring it</li>
+            <li>The smallest working solution that improves that process</li>
+            <li>A decision backed by numbers on whether it goes into production</li>
+            <li>An operable system that your own team understands</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Why pilots stall -->
+  <section class="section section-surface">
+    <div class="container pillar-content">
+      <h2>Why most AI pilots stall</h2>
+      <p>
+        The pilot stage rarely dies for technical reasons. Far more often the demo goes well, and
+        then nobody can say what the next step should be. I see five recurring patterns, and each
+        one has a well-established project management answer.
+      </p>
+
+      <div class="failure-list">
+        <div class="failure-item">
+          <h3>1. There is nothing to measure against</h3>
+          <p>
+            If we do not know at the start how many minutes and how many pairs of hands it takes
+            today to process a request for quotation, there will be nothing to compare with at the
+            end. Enthusiasm is not a metric.
+          </p>
+          <p class="pm-answer">
+            <strong>The PM answer:</strong> the current state is measured in the first week, and the
+            acceptance criteria are signed off before development starts.
+          </p>
+        </div>
+
+        <div class="failure-item">
+          <h3>2. The demo data is not the live data</h3>
+          <p>
+            Everything works beautifully on hand-picked sample documents. The live archive is where
+            the scanned contracts sit, with the poor-quality spreadsheets, the three competing
+            naming conventions and the missing fields.
+          </p>
+          <p class="pm-answer">
+            <strong>The PM answer:</strong> from day one the pilot runs on real, anonymised
+            production data, not on a cleaned-up sample.
+          </p>
+        </div>
+
+        <div class="failure-item">
+          <h3>3. There is no method for evaluating quality</h3>
+          <p>
+            A language model gets things wrong from time to time, and it does so confidently.
+            Without a fixed set of questions and answers to re-run after every change, every
+            refinement stays a matter of faith. This evaluation set, or “eval set”, is the most
+            important and most frequently skipped element of the project.
+          </p>
+          <p class="pm-answer">
+            <strong>The PM answer:</strong> we assemble a set of between 50 and 200 real questions
+            together with the business owner, and run it at every version change.
+          </p>
+        </div>
+
+        <div class="failure-item">
+          <h3>4. Security and legal questions are left until last</h3>
+          <p>
+            The data protection officer or the information security lead typically enters the
+            picture when the system is almost finished. That is when it emerges that one category of
+            data may not leave the country, or that permissions have to be enforced at document
+            level.
+          </p>
+          <p class="pm-answer">
+            <strong>The PM answer:</strong> these people take part in the assessment; they are not
+            obstacles at sign-off. The data flow map is drawn before the pilot begins.
+          </p>
+        </div>
+
+        <div class="failure-item">
+          <h3>5. Nobody takes it over</h3>
+          <p>
+            After a successful pilot the system stays on the consultant’s machine. There is no
+            operations manual, no owner for the budget, and six months later nobody dares touch it.
+          </p>
+          <p class="pm-answer">
+            <strong>The PM answer:</strong> handover is not a closing event but a phase planned from
+            day one, with documentation and a shared operating period.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. How I work -->
+  <section class="section section-light">
+    <div class="container pillar-content">
+      <h2>How I work: four phases</h2>
+      <p>
+        Every phase is decided and priced separately. You can stop at the end of any of them, and
+        the output stays yours. The structure matters: you do not have to buy a whole project up
+        front when nobody yet knows whether it is worth it.
+      </p>
+
+      <div class="phase-grid">
+        <div class="phase-card">
+          <span class="phase-number">01</span>
+          <h3>Assessment</h3>
+          <p class="phase-time">2–3 weeks</p>
+          <p>
+            We walk through the candidate processes and look for where the real repetitive burden
+            sits. We record today’s time spent and error rate, map the data sources, and clarify the
+            data protection constraints. The output is a ranked list of what is worth doing first,
+            and what is not worth doing at all.
+          </p>
+        </div>
+
+        <div class="phase-card">
+          <span class="phase-number">02</span>
+          <h3>Pilot</h3>
+          <p class="phase-time">6–8 weeks</p>
+          <p>
+            The smallest working solution is built for a single process, on real data, with real
+            users. The evaluation set is created, and we measure answer quality, runtime and cost.
+            The output is a running system and a decision pack: a numbers-backed answer on whether
+            it goes into production.
+          </p>
+        </div>
+
+        <div class="phase-card">
+          <span class="phase-number">03</span>
+          <h3>Production</h3>
+          <p class="phase-time">8–12 weeks</p>
+          <p>
+            The pilot turns into an operable system: integration with the existing landscape,
+            permissions, logging, backups, monitoring and alerts. We write the operations manual and
+            prepare the users. This is where it becomes clear that the working instructions around
+            the process need adjusting too.
+          </p>
+        </div>
+
+        <div class="phase-card">
+          <span class="phase-number">04</span>
+          <h3>Handover</h3>
+          <p class="phase-time">4–6 weeks</p>
+          <p>
+            Your team takes over operations and I stay behind them for a while. Joint incident
+            handling, training on how to maintain the evaluation set, naming an owner for the
+            budget. The goal is that the system keeps working once I am no longer on the project.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Capability areas -->
+  <section class="section section-surface">
+    <div class="container pillar-content">
+      <h2>Capability areas</h2>
+      <p>
+        I work in four areas regularly. In each, the question is whether the process can tolerate
+        the machine getting it wrong, and where a human approval point has to be built in.
+      </p>
+
+      <div class="capability-list">
+        <div class="capability">
+          <h3>Document processing and internal search</h3>
+          <p>
+            Corporate knowledge usually lives scattered: in contracts, in policies, in old email
+            threads, in project documentation. Retrieval-augmented generation, or RAG, means the
+            model first searches our own documents for the relevant passages and composes an answer
+            only from those. That gives two things: the answer cites a source, and the model is not
+            guessing from memory.
+          </p>
+          <p>
+            The typical use is an internal question-and-answer interface for customer service, the
+            technical team or legal. The difficulties do not begin at the model: splitting up the
+            documents, enforcing permissions at document level and getting the source citations
+            right consume the time.
+          </p>
+        </div>
+
+        <div class="capability">
+          <h3>Automated reporting and decision support</h3>
+          <p>
+            In many organisations several working days a week go into gathering data from several
+            systems, reconciling it and interpreting it. That part automates well: the data
+            collection and the arithmetic with conventional code, the written summary with a
+            language model. The model does not produce the numbers, it only puts into words what
+            lies behind them.
+          </p>
+          <p>
+            This division is safe precisely because the model does not calculate, so there is
+            nothing for it to get wrong at the level of the figures. The report goes out on a
+            schedule to wherever the team already works: email, an internal chat system or a
+            dashboard.
+          </p>
+        </div>
+
+        <div class="capability">
+          <h3>Monitoring and operations</h3>
+          <p>
+            An AI system is not alive simply because it has been built. Model versions get replaced,
+            pricing changes, the document base grows, and answer quality can degrade unnoticed.
+            That is why it has to be measured: runtime, error rate, cost, and a re-run of the
+            evaluation set at regular intervals.
+          </p>
+          <p>
+            The same goes for cost. A badly written query or a runaway retry loop can produce a
+            serious invoice if nothing alerts on it. This is classic operations work; only the
+            metrics are new.
+          </p>
+        </div>
+
+        <div class="capability">
+          <h3>Your own servers or the cloud</h3>
+          <p>
+            The argument for self-hosted execution, or “on-premise”, is data sensitivity: the data
+            never leaves the organisation, and the cost is predictable. Open-weight models — those
+            whose parameters can be downloaded freely and run on your own hardware — have by now
+            reached a level sufficient for many internal tasks. In exchange they ask for hardware,
+            operations and update discipline.
+          </p>
+          <p>
+            Cloud models are typically more accurate and start with no operational overhead, but
+            they come with usage-based cost and an external data processor relationship. The two do
+            not exclude each other: it is common for the sensitive data to stay on your own servers
+            while the rest goes to the cloud. That decision is part of the assessment, not an
+            assumption going in.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Evidence -->
+  <section class="section section-light">
+    <div class="container pillar-content">
+      <h2>The evidence: my own systems, in production</h2>
+      <p>
+        In the AI consulting market it is hard to tell apart someone who has actually operated such
+        a system from someone who only talks about them. In my case you can check: I have been
+        running AI-based systems on my own servers for years, on a schedule, on live data, with real
+        operational consequences.
+      </p>
+      <p class="disclosure">
+        One clarification matters: the systems listed below run on my own infrastructure and are
+        not client references. They prove that I do not know this technology from demos, but from
+        the place where you have to fix it on Monday morning if it broke.
+      </p>
+
+      <div class="proof-grid">
+        <div class="proof-card">
+          <h3>Scheduled analysis system for market data</h3>
+          <p>
+            Runs on business days against a 15-item watchlist drawn from several data sources. A
+            language model translates the technical signals into business language, and
+            the alerts land in a chat system. This one taught me how much it matters whether a
+            system swallows an error from an external data source or surfaces it.
+          </p>
+        </div>
+
+        <div class="proof-card">
+          <h3>Weekly market discovery agent</h3>
+          <p>
+            Discovery across five European countries, with its own dashboard and more than 170
+            companies on record. It runs on a weekly schedule and builds on the earlier database in
+            every round. A good example of how a repeated agent run has to be written so that it
+            does not overwrite what the user entered by hand.
+          </p>
+        </div>
+
+        <div class="proof-card">
+          <h3>Daily email digest</h3>
+          <p>
+            An automatic morning summary of incoming mail, with filtering rules and a human approval
+            point. A small system, but it shows precisely how to build a feedback loop into a
+            classification task instead of trusting the machine blindly.
+          </p>
+        </div>
+
+        <div class="proof-card">
+          <h3>Code review agent team</h3>
+          <p>
+            A weekly system that reviews from four different roles — development, testing, security
+            and architecture — and has covered 15 codebases so far. The lesson is that several
+            agents with narrower roles give more reliable results than a single one that claims to
+            know everything.
+          </p>
+        </div>
+
+        <div class="proof-card">
+          <h3>On-premise document search product</h3>
+          <p>
+            A retrieval-based question-and-answer system running on my own server, which has matured
+            into a product of its own under the name Cognexa. This gave me most of what I know about
+            document chunking, source citation and measuring answer quality.
+          </p>
+        </div>
+
+        <div class="proof-card">
+          <h3>Applied AI handbook</h3>
+          <p>
+            A 37,000-word professional handbook in 13 chapters, written for internal use and
+            addressed to experienced IT project managers. A full chapter covers replacing the model
+            runtime layer: a decision based on my own measurements about whether the switch paid off.
+            Faithfulness, meaning how closely the answer stays to the content of the source
+            document, improved by close to twenty percent in that measurement (from 0.656 to 0.783).
+          </p>
+        </div>
+      </div>
+
+      <p class="proof-outro">
+        The technical detail, the decision logs and the measurement results are published on the
+        <a href="https://simonprojects.eu" rel="noopener">simonprojects.eu</a> sister site. The
+        systems presented there are the professional backing for what I offer here as a service.
+      </p>
+    </div>
+  </section>
+
+  <!-- 6. Fit -->
+  <section class="section section-surface">
+    <div class="container pillar-content">
+      <h2>Who this is for, and who it is not</h2>
+      <p>
+        An honest filter is cheaper for both of us than an abandoned project. So it is worth being
+        clear at the outset about whether your situation suits this way of working.
+      </p>
+
+      <div class="fit-grid">
+        <div class="fit-card fit-yes">
+          <h3>Probably a good fit</h3>
+          <ul>
+            <li>There is a concrete, repetitive process that eats human time today</li>
+            <li>The process has an owner who can judge whether an answer is good</li>
+            <li>The data exists, even if it is untidy</li>
+            <li>You accept that measurement is part of the project, not an option</li>
+            <li>A mid-sized or growing organisation where a decision fits into two meetings</li>
+          </ul>
+        </div>
+        <div class="fit-card fit-no">
+          <h3>Probably not</h3>
+          <ul>
+            <li>The goal is the announcement, not a working system</li>
+            <li>There is no designated business owner, only intent from the top</li>
+            <li>The expectation is flawless machine decisions with no review</li>
+            <li>The expected return is due next quarter</li>
+            <li>The request is foundation model development or a research task</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>
+        If something on the “Probably not” list sounds familiar, it is still worth talking. The
+        assessment exists precisely so that we can say this out loud before anyone spends money on
+        development.
+      </p>
+    </div>
+  </section>
+
+  <!-- 7. Background -->
+  <section class="section section-light">
+    <div class="container pillar-content">
+      <h2>Why an IT project manager</h2>
+      <p>
+        Behind me are more than twenty years in industry and more than fifteen years of IT project
+        management, largely in energy and utilities. SAP IS-U rollouts, cloud migrations, carve-outs,
+        data migrations and HR system implementations at organisations such as MVM Ügyfélszolgálati
+        Zrt., E.ON Tiszántúli Áramhálózati Zrt., OPUS TITÁSZ Zrt., MOL Nyrt. and Allianz Hungária
+        Zrt.
+      </p>
+      <p>
+        In those programmes the technology was never the hard part. The hard part was scope
+        management, aligning stakeholders, data quality and handover. AI projects fail on exactly
+        the same things, only faster and more visibly. The value I bring is the intersection of
+        those two worlds: twenty years of delivery discipline, alongside AI systems that exist in
+        operation rather than as demos.
+      </p>
+      <p>
+        More on the professional background on the <a href="/en/about/">About</a> page, and on the
+        classic project management and automation services on the
+        <a href="/en/services/">Services</a> page.
+      </p>
+    </div>
+  </section>
+
+  <!-- 8. FAQ -->
+  <section class="section section-surface">
+    <div class="container pillar-content">
+      <h2 class="text-center section-heading">Frequently asked questions</h2>
+      <p class="section-subtitle text-center">What most people ask before the assessment</p>
+      <FAQ items={faqItems} />
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-dark cta-section">
+    <div class="container text-center">
+      <h2>Is there a process you would like to automate?</h2>
+      <p class="cta-description">
+        Let’s start with a short conversation about where most of the time goes today. If it turns
+        out the problem can be solved without AI, I will tell you that too.
+      </p>
+      <a href="/en/contact/" class="btn-primary cta-button">
+        Get in touch
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <p class="cta-mail">Or write directly: <span class="obf-email">info[ at]prioconsulting.hu</span></p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .pillar-content {
+    max-width: 900px;
+  }
+
+  .pillar-content h2 {
+    margin-bottom: var(--space-lg);
+  }
+
+  .pillar-content > p {
+    color: var(--color-secondary);
+    margin-bottom: var(--space-lg);
+    line-height: 1.8;
+  }
+
+  .pillar-content a:not(.btn-primary) {
+    color: var(--color-cta);
+    text-decoration: underline;
+  }
+
+  .pillar-content a:not(.btn-primary):hover {
+    color: var(--color-cta-hover);
+  }
+
+  .section-heading {
+    margin-bottom: var(--space-sm);
+  }
+
+  .section-subtitle {
+    color: var(--color-secondary);
+    margin-bottom: var(--space-2xl);
+    font-size: 1.125rem;
+  }
+
+  /* Contrast (no / yes) */
+  .contrast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-2xl);
+  }
+
+  .contrast-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-sm);
+    border-top: 3px solid var(--color-border);
+  }
+
+  .contrast-card.contrast-yes {
+    border-top-color: var(--color-cta);
+  }
+
+  .contrast-card h3 {
+    margin-bottom: var(--space-md);
+    font-size: 1.125rem;
+  }
+
+  .contrast-card ul,
+  .fit-card ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .contrast-card li,
+  .fit-card li {
+    position: relative;
+    padding-left: var(--space-lg);
+    color: var(--color-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .contrast-card li::before,
+  .fit-card li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-text-light);
+  }
+
+  .contrast-yes li::before,
+  .fit-yes li::before {
+    background: var(--color-cta);
+  }
+
+  /* Failure modes */
+  .failure-list {
+    display: grid;
+    gap: var(--space-xl);
+    margin-top: var(--space-2xl);
+  }
+
+  .failure-item {
+    background: var(--color-white);
+    border-left: 3px solid var(--color-cta);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+  }
+
+  .failure-item h3 {
+    margin-bottom: var(--space-sm);
+    font-size: 1.25rem;
+  }
+
+  .failure-item p {
+    color: var(--color-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .failure-item .pm-answer {
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-primary);
+  }
+
+  /* Phases */
+  .phase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-2xl);
+  }
+
+  .phase-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+  }
+
+  .phase-number {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-cta);
+    line-height: 1;
+    margin-bottom: var(--space-sm);
+  }
+
+  .phase-card h3 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.25rem;
+  }
+
+  .phase-time {
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-light);
+    margin-bottom: var(--space-md);
+  }
+
+  .phase-card p:last-child {
+    color: var(--color-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  /* Capabilities */
+  .capability-list {
+    display: grid;
+    gap: var(--space-2xl);
+    margin-top: var(--space-2xl);
+  }
+
+  .capability {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .capability h3 {
+    margin-bottom: var(--space-md);
+    color: var(--color-primary);
+  }
+
+  .capability p {
+    color: var(--color-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .capability p + p {
+    margin-top: var(--space-md);
+  }
+
+  /* Proof */
+  .disclosure {
+    background: var(--color-surface);
+    border-left: 3px solid var(--color-text-light);
+    border-radius: var(--radius-sm);
+    padding: var(--space-lg);
+    font-size: 1rem !important;
+  }
+
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-2xl);
+  }
+
+  .proof-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-base);
+  }
+
+  .proof-card:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .proof-card h3 {
+    margin-bottom: var(--space-sm);
+    font-size: 1.125rem;
+  }
+
+  .proof-card p {
+    color: var(--color-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
+
+  .proof-outro {
+    margin-top: var(--space-2xl);
+  }
+
+  /* Fit */
+  .fit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+    margin-block: var(--space-2xl);
+  }
+
+  .fit-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-sm);
+    border-top: 3px solid var(--color-border);
+  }
+
+  .fit-card.fit-yes {
+    border-top-color: var(--color-cta);
+  }
+
+  .fit-card h3 {
+    margin-bottom: var(--space-md);
+    font-size: 1.125rem;
+  }
+
+  /* CTA */
+  .cta-section h2 {
+    margin-bottom: var(--space-md);
+  }
+
+  .cta-description {
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: var(--space-xl);
+    font-size: 1.125rem;
+    max-width: 560px;
+    margin-inline: auto;
+  }
+
+  .cta-button {
+    font-size: 1.0625rem;
+    padding: 14px 32px;
+  }
+
+  .cta-mail {
+    margin-top: var(--space-xl);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9375rem;
+  }
+
+  .cta-mail .obf-email {
+    color: var(--color-cta);
+  }
+</style>

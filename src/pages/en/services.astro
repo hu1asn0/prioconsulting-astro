@@ -128,6 +128,27 @@ const servicesSchema = services.map((s) => ({
     </div>
   </section>
 
+  <!-- Applied AI pillar link -->
+  <section class="section section-surface">
+    <div class="container service-detail">
+      <div class="service-detail-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0-3 3v1a3 3 0 0 0 0 6v1a3 3 0 0 0 3 3v1a3 3 0 0 0 6 0v-1a3 3 0 0 0 3-3v-1a3 3 0 0 0 0-6V9a3 3 0 0 0-3-3V5a3 3 0 0 0-3-3Z"/><path d="M12 5v14"/></svg>
+      </div>
+      <h2>Applied AI</h2>
+      <p class="service-detail-lead">A separate specialism: bringing artificial intelligence into enterprise processes with project management discipline.</p>
+      <p class="applied-ai-teaser">
+        Document processing and internal search, automated reporting, monitoring of AI systems, and
+        the decision between self-hosted and cloud execution. The work advances in four separately
+        decidable phases: assessment, pilot, production, handover. The full picture is set out on a
+        page of its own.
+      </p>
+      <a href="/en/applied-ai/" class="btn-primary">
+        Applied AI in detail
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="section section-dark cta-section">
     <div class="container text-center">
@@ -183,6 +204,13 @@ const servicesSchema = services.map((s) => ({
     color: var(--color-secondary);
     font-size: 1rem;
     line-height: 1.7;
+  }
+
+  .applied-ai-teaser {
+    color: var(--color-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: var(--space-xl);
   }
 
   .cta-section h2 {

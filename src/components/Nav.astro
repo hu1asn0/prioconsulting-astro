@@ -10,12 +10,14 @@ const navItems = lang === 'hu'
   ? [
       { label: 'Rólam', href: '/rolam/' },
       { label: 'Szolgáltatások', href: '/szolgaltatasok/' },
+      { label: 'Applied AI', href: '/applied-ai/' },
       { label: 'Blog', href: '/blog/' },
       { label: 'Kapcsolat', href: '/kapcsolat/' },
     ]
   : [
       { label: 'About', href: '/en/about/' },
       { label: 'Services', href: '/en/services/' },
+      { label: 'Applied AI', href: '/en/applied-ai/' },
       { label: 'Blog', href: '/en/blog/' },
       { label: 'Contact', href: '/en/contact/' },
     ];
@@ -29,6 +31,7 @@ function getLangSwitchHref() {
       '/': '/en/',
       '/rolam/': '/en/about/',
       '/szolgaltatasok/': '/en/services/',
+      '/applied-ai/': '/en/applied-ai/',
       '/blog/': '/en/blog/',
       '/kapcsolat/': '/en/contact/',
       '/impresszum/': '/en/impressum/',
@@ -41,6 +44,7 @@ function getLangSwitchHref() {
       '/en/': '/',
       '/en/about/': '/rolam/',
       '/en/services/': '/szolgaltatasok/',
+      '/en/applied-ai/': '/applied-ai/',
       '/en/blog/': '/blog/',
       '/en/contact/': '/kapcsolat/',
       '/en/impressum/': '/impresszum/',
