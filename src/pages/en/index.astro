@@ -84,6 +84,23 @@ const iconMentor = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" 
     </div>
   </section>
 
+  <!-- Applied AI layer -->
+  <section class="section section-surface">
+    <div class="container applied-ai-band">
+      <span class="applied-ai-eyebrow">Applied AI layer</span>
+      <h2>Artificial intelligence with project discipline</h2>
+      <p>
+        Alongside classic project management, I work on bringing AI into enterprise processes as a
+        separate specialism: assessment, pilot, production, handover. What stands behind the method
+        is not a set of demos, but scheduled AI systems running on my own servers.
+      </p>
+      <a href="/en/applied-ai/" class="btn-primary">
+        Applied AI service
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
   <!-- Stats Section -->
   <section class="section section-dark stats-section">
     <div class="container">
@@ -159,6 +176,33 @@ const iconMentor = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--space-xl);
+  }
+
+  /* Applied AI band */
+  .applied-ai-band {
+    max-width: 760px;
+    text-align: center;
+  }
+
+  .applied-ai-eyebrow {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-cta);
+    margin-bottom: var(--space-sm);
+  }
+
+  .applied-ai-band h2 {
+    margin-bottom: var(--space-md);
+  }
+
+  .applied-ai-band p {
+    color: var(--color-secondary);
+    margin-bottom: var(--space-xl);
+    line-height: 1.8;
   }
 
   .stats-section {
