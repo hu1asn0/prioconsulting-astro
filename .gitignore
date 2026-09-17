@@ -26,7 +26,6 @@ pnpm-debug.log*
 # sync logs
 beehiiv-sync.log
 
-# impeccable: engine binary + local hook settings (reinstall: npx impeccable install)
-.claude/skills/impeccable/scripts/bin/
+# impeccable: skill is installed globally (~/.claude); only local config stays ignored
 .claude/settings.local.json
 .impeccable/config.local.json
