@@ -78,16 +78,18 @@ const { items } = Astro.props;
   }
 
   .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height var(--transition-slow), padding var(--transition-slow);
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows var(--transition-slow);
   }
 
   .faq-item.open .faq-answer {
-    max-height: 500px;
+    grid-template-rows: 1fr;
   }
 
   .faq-answer p {
+    min-height: 0;
+    overflow: hidden;
     padding: 0 var(--space-xl) var(--space-lg);
     font-size: 1rem;
     color: var(--color-secondary);
