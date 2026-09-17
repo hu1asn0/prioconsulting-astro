@@ -77,7 +77,7 @@ const buildModel = (names: string[]): Brick[] => {
         <BrickDiagram bricks={programme} unit={26} labelledBy="step1-drawing-caption" />
         <figcaption id="step1-drawing-caption" class="sr-only">{t.hero.drawingAlt}</figcaption>
       </figure>
-      <p class="drawing-legend" aria-hidden="true">{t.programBlocks.join(' · ')} <span class="drawing-legend-piece">+ {t.pieceLabel}</span></p>
+      <p class="drawing-legend" aria-hidden="true">{t.programBlocks.join(' · ')}</p>
     </div>
 
     <aside class="spread-right">
@@ -268,10 +268,6 @@ const buildModel = (names: string[]): Brick[] => {
   }
   .drawing-legend {
     display: none;
-  }
-  .drawing-legend-piece {
-    color: var(--color-piece);
-    font-weight: 700;
   }
 
   /* 1:1 call-out box */
