@@ -29,3 +29,5 @@ beehiiv-sync.log
 # impeccable: skill is installed globally (~/.claude); only local config stays ignored
 .claude/settings.local.json
 .impeccable/config.local.json
+.impeccable/reference/
+.impeccable/questions/
