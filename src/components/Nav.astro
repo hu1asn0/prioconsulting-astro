@@ -150,10 +150,12 @@ const langSwitchLabel = lang === 'hu' ? 'EN' : 'HU';
     position: absolute;
     bottom: -4px;
     left: 0;
-    width: 0;
+    width: 100%;
     height: 2px;
     background: var(--color-cta);
-    transition: width var(--transition-base);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-base);
   }
 
   .nav-link:hover,
@@ -163,7 +165,7 @@ const langSwitchLabel = lang === 'hu' ? 'EN' : 'HU';
 
   .nav-link.active::after,
   .nav-link:hover::after {
-    width: 100%;
+    transform: scaleX(1);
   }
 
   .nav-lang-switch {

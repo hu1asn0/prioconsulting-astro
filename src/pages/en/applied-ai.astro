@@ -577,6 +577,17 @@ const faqSchema = {
     margin-bottom: var(--space-lg);
   }
 
+  /* Prose measure: single-column text blocks cap at 72ch; grids keep the 900px container */
+  .pillar-content > p,
+  .pillar-content > ul,
+  .pillar-content > ol,
+  .failure-list,
+  .capability-list,
+  .disclosure,
+  .proof-outro {
+    max-width: 72ch;
+  }
+
   .pillar-content > p {
     color: var(--color-secondary);
     margin-bottom: var(--space-lg);
@@ -615,11 +626,11 @@ const faqSchema = {
     border-radius: var(--radius-lg);
     padding: var(--space-xl);
     box-shadow: var(--shadow-sm);
-    border-top: 3px solid var(--color-border);
+    border: 1px solid var(--color-border);
   }
 
   .contrast-card.contrast-yes {
-    border-top-color: var(--color-cta);
+    border-color: var(--color-cta);
   }
 
   .contrast-card h3 {
@@ -669,8 +680,9 @@ const faqSchema = {
 
   .failure-item {
     background: var(--color-white);
-    border-left: 3px solid var(--color-cta);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
     padding: var(--space-xl);
   }
 
@@ -727,7 +739,7 @@ const faqSchema = {
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: var(--color-text-light);
+    color: var(--color-secondary);
     margin-bottom: var(--space-md);
   }
 
@@ -769,7 +781,6 @@ const faqSchema = {
   /* Proof */
   .disclosure {
     background: var(--color-surface);
-    border-left: 3px solid var(--color-text-light);
     border-radius: var(--radius-sm);
     padding: var(--space-lg);
     font-size: 1rem !important;
@@ -822,11 +833,11 @@ const faqSchema = {
     border-radius: var(--radius-lg);
     padding: var(--space-xl);
     box-shadow: var(--shadow-sm);
-    border-top: 3px solid var(--color-border);
+    border: 1px solid var(--color-border);
   }
 
   .fit-card.fit-yes {
-    border-top-color: var(--color-cta);
+    border-color: var(--color-cta);
   }
 
   .fit-card h3 {
