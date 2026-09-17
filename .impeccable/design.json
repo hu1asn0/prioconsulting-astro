@@ -1,0 +1,332 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-17T15:22:04+00:00",
+  "title": "Design System: Prio Consulting",
+  "extensions": {
+    "colorMeta": {
+      "midnight-slate": {
+        "role": "primary",
+        "displayName": "Midnight Slate",
+        "canonical": "#0F172A",
+        "tonalRamp": [
+          "#0f172a",
+          "#1e293b",
+          "#334155",
+          "#475569",
+          "#64748b",
+          "#94a3b8",
+          "#cbd5e1",
+          "#f1f5f9"
+        ]
+      },
+      "slate-ink": {
+        "role": "primary",
+        "displayName": "Slate Ink",
+        "canonical": "#334155",
+        "tonalRamp": [
+          "#0f172a",
+          "#1e293b",
+          "#334155",
+          "#475569",
+          "#64748b",
+          "#94a3b8",
+          "#cbd5e1",
+          "#f1f5f9"
+        ]
+      },
+      "antique-gold": {
+        "role": "secondary",
+        "displayName": "Antique Gold",
+        "canonical": "#CA8A04",
+        "tonalRamp": [
+          "#713f12",
+          "#854d0e",
+          "#a16207",
+          "#ca8a04",
+          "#eab308",
+          "#facc15",
+          "#fde047",
+          "#fef9c3"
+        ]
+      },
+      "antique-gold-deep": {
+        "role": "secondary",
+        "displayName": "Antique Gold Deep",
+        "canonical": "#A16207",
+        "tonalRamp": [
+          "#713f12",
+          "#854d0e",
+          "#a16207",
+          "#ca8a04",
+          "#eab308",
+          "#facc15",
+          "#fde047",
+          "#fef9c3"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#F8FAFC",
+        "tonalRamp": [
+          "#0f172a",
+          "#1e293b",
+          "#334155",
+          "#475569",
+          "#64748b",
+          "#94a3b8",
+          "#cbd5e1",
+          "#f1f5f9"
+        ]
+      },
+      "paper-shaded": {
+        "role": "neutral",
+        "displayName": "Paper Shaded",
+        "canonical": "#F1F5F9",
+        "tonalRamp": [
+          "#0f172a",
+          "#1e293b",
+          "#334155",
+          "#475569",
+          "#64748b",
+          "#94a3b8",
+          "#cbd5e1",
+          "#f1f5f9"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "#0f172a",
+          "#1e293b",
+          "#334155",
+          "#475569",
+          "#64748b",
+          "#94a3b8",
+          "#cbd5e1",
+          "#f1f5f9"
+        ]
+      },
+      "near-black": {
+        "role": "neutral",
+        "displayName": "Near Black",
+        "canonical": "#020617",
+        "tonalRamp": [
+          "#0f172a",
+          "#1e293b",
+          "#334155",
+          "#475569",
+          "#64748b",
+          "#94a3b8",
+          "#cbd5e1",
+          "#f1f5f9"
+        ]
+      },
+      "slate-muted": {
+        "role": "neutral",
+        "displayName": "Slate Muted",
+        "canonical": "#64748B",
+        "tonalRamp": [
+          "#0f172a",
+          "#1e293b",
+          "#334155",
+          "#475569",
+          "#64748b",
+          "#94a3b8",
+          "#cbd5e1",
+          "#f1f5f9"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#E2E8F0",
+        "tonalRamp": [
+          "#0f172a",
+          "#1e293b",
+          "#334155",
+          "#475569",
+          "#64748b",
+          "#94a3b8",
+          "#cbd5e1",
+          "#f1f5f9"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero title only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section h2, usually centred with a Slate Ink subtitle."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "h3 and card titles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Paragraphs; blog content at 1.8 line-height."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase gold eyebrows above headlines; footer column headings."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-sm",
+        "value": "0 1px 2px rgba(0,0,0,0.05)",
+        "purpose": "Cards and testimonials at rest."
+      },
+      {
+        "name": "shadow-md",
+        "value": "0 4px 6px rgba(0,0,0,0.1)",
+        "purpose": "Primary button on hover."
+      },
+      {
+        "name": "shadow-lg",
+        "value": "0 10px 15px rgba(0,0,0,0.1)",
+        "purpose": "Service card on hover."
+      },
+      {
+        "name": "shadow-xl",
+        "value": "0 20px 25px rgba(0,0,0,0.15)",
+        "purpose": "Mobile nav drawer."
+      },
+      {
+        "name": "focus-glow",
+        "value": "0 0 0 3px rgba(15,23,42,0.12)",
+        "purpose": "Input focus, paired with midnight border."
+      }
+    ],
+    "motion": [
+      {
+        "name": "transition-fast",
+        "value": "150ms ease",
+        "purpose": "Micro state changes."
+      },
+      {
+        "name": "transition-base",
+        "value": "200ms ease",
+        "purpose": "Default: colour, lift, underline growth."
+      },
+      {
+        "name": "transition-slow",
+        "value": "300ms ease",
+        "purpose": "Drawer slide, FAQ reveal."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "480px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one call to action per surface; antique gold on white text.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Kérjen ajánlatot</a>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:var(--space-sm,.5rem);background:var(--color-cta,#CA8A04);color:var(--color-white,#fff);padding:12px 28px;border-radius:var(--radius-md,8px);font-family:var(--font-heading,Lexend,sans-serif);font-weight:600;font-size:1rem;border:none;text-decoration:none;transition:all var(--transition-base,200ms ease)}.ds-btn-primary:hover{background:var(--color-cta-hover,#A16207);transform:translateY(-1px);box-shadow:var(--shadow-md,0 4px 6px rgba(0,0,0,.1))}.ds-btn-primary:focus-visible{outline:2px solid var(--color-cta,#CA8A04);outline-offset:2px}"
+    },
+    {
+      "name": "Secondary Button (dark bands)",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Outline button for hero/footer only; white outline that fills on hover.",
+      "html": "<div style=\"background:#0F172A;padding:24px;display:inline-block\"><a class=\"ds-btn-secondary\" href=\"#\">Szolgáltatások</a></div>",
+      "css": ".ds-btn-secondary{display:inline-flex;align-items:center;gap:var(--space-sm,.5rem);background:transparent;color:var(--color-white,#fff);border:2px solid var(--color-white,#fff);padding:12px 28px;border-radius:var(--radius-md,8px);font-family:var(--font-heading,Lexend,sans-serif);font-weight:600;font-size:1rem;text-decoration:none;transition:all var(--transition-base,200ms ease)}.ds-btn-secondary:hover{background:var(--color-white,#fff);color:var(--color-primary,#0F172A);transform:translateY(-1px)}.ds-btn-secondary:focus-visible{outline:2px solid var(--color-cta,#CA8A04);outline-offset:2px}"
+    },
+    {
+      "name": "Service Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "White card with gold-tinted icon tile; hairline border, lifts on hover.",
+      "html": "<div class=\"ds-service-card\"><div class=\"ds-service-icon\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 3v18h18\"/><path d=\"m19 9-5 5-4-4-3 3\"/></svg></div><h3 class=\"ds-service-title\">IT Projekt Menedzsment</h3><p class=\"ds-service-desc\">SAP, CRM és ERP migrációk professzionális vezetése.</p></div>",
+      "css": ".ds-service-card{background:var(--color-white,#fff);border-radius:var(--radius-lg,12px);padding:var(--space-2xl,3rem);box-shadow:var(--shadow-sm,0 1px 2px rgba(0,0,0,.05));border:1px solid var(--color-border,#E2E8F0);transition:all var(--transition-base,200ms ease);max-width:340px}.ds-service-card:hover{box-shadow:var(--shadow-lg,0 10px 15px rgba(0,0,0,.1));transform:translateY(-2px);border-color:rgba(202,138,4,.3)}.ds-service-icon{width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:rgba(202,138,4,.1);border-radius:var(--radius-md,8px);margin-bottom:var(--space-lg,1.5rem);color:var(--color-cta,#CA8A04)}.ds-service-title{font-family:var(--font-heading,Lexend,sans-serif);font-size:1.25rem;font-weight:600;color:var(--color-primary,#0F172A);margin:0 0 var(--space-sm,.5rem);line-height:1.2}.ds-service-desc{font-family:var(--font-body,'Source Sans 3',sans-serif);font-size:1rem;color:var(--color-secondary,#334155);line-height:1.6;margin:0}"
+    },
+    {
+      "name": "Testimonial",
+      "kind": "custom",
+      "refersTo": "card",
+      "description": "Quote card with a 4px antique-gold left bar; italic Slate Ink text.",
+      "html": "<blockquote class=\"ds-testimonial\"><p class=\"ds-testimonial-text\">You fully captured the most important business points of the project and drove the whole story the right way.</p><footer class=\"ds-testimonial-footer\"><span class=\"ds-testimonial-person\">Máté Gerebenics</span><span class=\"ds-testimonial-role\">MOL Hungary Ltd.</span></footer></blockquote>",
+      "css": ".ds-testimonial{background:var(--color-white,#fff);border-radius:var(--radius-lg,12px);padding:var(--space-2xl,3rem);border-left:4px solid var(--color-cta,#CA8A04);box-shadow:var(--shadow-sm,0 1px 2px rgba(0,0,0,.05));margin:0;max-width:520px}.ds-testimonial-text{font-family:var(--font-body,'Source Sans 3',sans-serif);font-size:1.125rem;font-style:italic;color:var(--color-secondary,#334155);line-height:1.7;margin:0 0 var(--space-lg,1.5rem)}.ds-testimonial-footer{display:flex;flex-direction:column}.ds-testimonial-person{font-family:var(--font-heading,Lexend,sans-serif);font-weight:600;color:var(--color-primary,#0F172A);font-size:1rem}.ds-testimonial-role{font-size:.875rem;color:var(--color-text-light,#64748B)}"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Hairline-bordered field; midnight border + soft slate glow on focus.",
+      "html": "<label class=\"ds-label\" for=\"ds-in\">E-mail</label><input id=\"ds-in\" class=\"ds-input\" type=\"email\" placeholder=\"nev@ceg.hu\">",
+      "css": ".ds-label{display:block;font-family:var(--font-body,'Source Sans 3',sans-serif);font-weight:500;font-size:.9375rem;margin-bottom:var(--space-xs,.25rem);color:var(--color-text,#020617)}.ds-input{width:100%;max-width:360px;padding:12px 16px;border:1px solid var(--color-border,#E2E8F0);border-radius:var(--radius-md,8px);font-family:var(--font-body,'Source Sans 3',sans-serif);font-size:1rem;background:var(--color-white,#fff);color:var(--color-text,#020617);transition:border-color var(--transition-base,200ms ease)}.ds-input:focus{border-color:var(--color-primary,#0F172A);outline:none;box-shadow:0 0 0 3px rgba(15,23,42,.12)}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "lang-switch",
+      "description": "Sticky midnight header: tracked wordmark, links with growing gold underline, outlined language switch.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-logo\" href=\"#\">PRIO CONSULTING</a><nav class=\"ds-nav-links\"><a class=\"ds-nav-link ds-active\" href=\"#\">Főoldal</a><a class=\"ds-nav-link\" href=\"#\">Szolgáltatások</a><a class=\"ds-nav-link\" href=\"#\">Applied AI</a><a class=\"ds-nav-lang\" href=\"#\">EN</a></nav></header>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;gap:2rem;background:rgba(15,23,42,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(202,138,4,.15);padding:1rem 1.5rem}.ds-nav-logo{font-family:var(--font-heading,Lexend,sans-serif);font-size:1.5rem;font-weight:700;color:var(--color-white,#fff);letter-spacing:.15em;text-decoration:none}.ds-nav-links{display:flex;align-items:center;gap:var(--space-xl,2rem)}.ds-nav-link{position:relative;font-family:var(--font-heading,Lexend,sans-serif);font-size:.9375rem;font-weight:500;color:rgba(255,255,255,.8);text-decoration:none;transition:color var(--transition-base,200ms ease)}.ds-nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--color-cta,#CA8A04);transition:width var(--transition-base,200ms ease)}.ds-nav-link:hover,.ds-nav-link.ds-active{color:var(--color-cta,#CA8A04)}.ds-nav-link:hover::after,.ds-nav-link.ds-active::after{width:100%}.ds-nav-lang{font-family:var(--font-heading,Lexend,sans-serif);font-size:.8125rem;font-weight:600;color:var(--color-cta,#CA8A04);border:1.5px solid var(--color-cta,#CA8A04);border-radius:var(--radius-sm,6px);padding:4px 10px;text-decoration:none;letter-spacing:.05em;transition:all var(--transition-base,200ms ease)}.ds-nav-lang:hover{background:var(--color-cta,#CA8A04);color:var(--color-primary,#0F172A)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Boardroom Whiteboard",
+    "overview": "The site is built like a senior consultant's boardroom: a deep, cool, midnight-slate ground carries the important moments (hero, footer, mobile navigation), and a single antique-gold accent marks exactly the places where a decision is asked for — the CTA, the active nav item, the focus ring, the quote bar on a testimonial. Everything else is paper: pale slate surfaces, hairline borders, generous whitespace. Nothing shimmers; authority comes from contrast and restraint, not from effects.\n\nDensity is low and editorial. Headlines are large, tight-tracked Lexend; body copy is Source Sans 3 at a comfortable 1.125rem with 1.7 line-height. Sections alternate between paper and shaded-paper backgrounds, with dark bands reserved for the opening and closing of a page. Motion is quiet: 150–300 ms eases, a one- or two-pixel lift on hover, no bounce.\n\nDirection (confirmed 2026-09-17, not yet implemented): the owner wants components to feel more tactile and bolder than today. The tokens in this file describe the current build; when new work lands, it may deepen shadows and hover motion within the existing vocabulary but must not add colour, fonts or new radii to do so.",
+    "keyCharacteristics": [
+      "Dark-band framing: midnight-slate hero and footer, paper body between them.",
+      "One accent, used sparingly: antique gold marks action and attention only.",
+      "Typography-led hierarchy: Lexend display vs. Source Sans 3 body, no images today.",
+      "Soft, ambient depth: hairline borders + small shadows; lift on hover.",
+      "Formal register on Hungarian pages; English mirrors the same structure."
+    ],
+    "rules": [
+      {
+        "name": "The One Gold Rule",
+        "body": "Antique gold appears on a screen only where the reader is being asked to act or look: buttons, active state, focus, one accent bar. It is never a background for text blocks and never used decoratively at full strength.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tinted Dark Rule",
+        "body": "There is no pure black or pure grey. Dark is midnight slate; greys are slate-tinted. New surfaces pick from the slate ramp, not from #000/#333.",
+        "section": "colors"
+      },
+      {
+        "name": "The Lexend-Means-Structure Rule",
+        "body": "Lexend is used for anything that names or navigates (headings, buttons, nav, labels, wordmark, numbers). Source Sans 3 is used for anything that is read. Do not set body copy in Lexend or headings in Source Sans.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hover-Earns-Depth Rule",
+        "body": "Surfaces are near-flat at rest; shadow and lift arrive on interaction. (Direction: the owner wants this lift to feel bolder — increase within the existing four-step shadow scale rather than inventing new shadow values.)",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep antique gold to action and attention (The One Gold Rule); use its 8–15% tints for icon tiles and glows, 30% for hover borders.",
+      "Do frame pages with dark bands (hero + footer) and keep the body on paper.",
+      "Do use the existing four-step shadow scale and 1–2px lift for hover; make it bolder within that scale when the \"tactile\" direction is implemented.",
+      "Do set headings, buttons, labels and numbers in Lexend and running text in Source Sans 3.",
+      "Do keep prefers-reduced-motion support and the gold :focus-visible outline on every new interactive element."
+    ],
+    "donts": [
+      "Don't introduce pure black, pure grey, a second accent colour, or gradients as text backgrounds — the palette is slate + one gold.",
+      "Don't nest cards inside cards or wrap plain text sections in card chrome; the section background alternation is the grouping.",
+      "Don't add a third font, condensed/display faces, or all-caps body copy.",
+      "Don't use bounce or elastic easing; all motion is plain ease at 150–300 ms.",
+      "Don't put the secondary (outline) button on light surfaces — it is designed for the dark bands only."
+    ]
+  }
+}
