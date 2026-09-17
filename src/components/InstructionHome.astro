@@ -1,0 +1,563 @@
+---
+/**
+ * InstructionHome — the homepage as page one of a build-instruction book.
+ * All copy comes from the page (HU/EN); this component owns structure and drawings.
+ */
+import BrickDiagram, { type Brick } from './BrickDiagram.astro';
+import Testimonial from './Testimonial.astro';
+import FAQ from './FAQ.astro';
+
+export interface HomeCopy {
+  lang: 'hu' | 'en';
+  stepWord: string;              // "lépés" / "step"
+  hero: { title: string; lead: string; ctaLabel: string; ctaHref: string; drawingAlt: string };
+  callout: { name: string; role: string; years: string; company: string; scaleLabel: string; partsLabel: string };
+  programBlocks: string[];       // labels on the ghosted programme: 4 items
+  pieceLabel: string;            // label on the new piece
+  stepsHeading: string;
+  steps: { title: string; time: string; body: string; label: string }[]; // 4 items, steps 2–5
+  inventory: { heading: string; note: string; items: { title: string; body: string; href?: string; linkLabel?: string }[] };
+  builds: { heading: string; note: string; groups: { sector: string; names: string[] }[] };
+  faqNote: string;              // e.g. "Megjegyzés" — the notes-plate label
+  quote: { heading: string; items: { quote: string; company: string; person: string }[] };
+  faq: { heading: string; items: { question: string; answer: string }[] };
+  closing: { title: string; body: string; ctaLabel: string; ctaHref: string };
+}
+
+interface Props { copy: HomeCopy }
+const { copy: t } = Astro.props;
+
+// Step 1 drawing: the programme stands, one seat is empty, the piece drops in.
+const [b1, b2, b3, b4] = t.programBlocks;
+const programme: Brick[] = [
+  { x: 0, y: 0, z: 0, w: 6, d: 4, h: 0.35, color: 'ghost' },
+  { x: 0, y: 0, z: 0.35, w: 3, d: 2, color: 'ghost', label: b1, tile: true },
+  { x: 3, y: 0, z: 0.35, w: 3, d: 2, color: 'ghost', label: b3, tile: true },
+  { x: 0, y: 2, z: 0.35, w: 2, d: 2, color: 'ghost', label: b2, tile: true },
+  { x: 2, y: 2, z: 0.35, w: 2, d: 2, color: 'ghost', label: b4, tile: true },
+  { x: 4, y: 2, z: 0.35, w: 2, d: 2, color: 'piece', label: t.pieceLabel, drop: 2.4 },
+];
+
+// Steps 2–5: everything built so far ghosted, this step's brick solid blue on top.
+const stepDrawing = (i: number): Brick[] => {
+  const base: Brick[] = [
+    { x: 0, y: 0, z: 0, w: 4, d: 3, h: 0.35, color: 'ghost' },
+    { x: 0, y: 0, z: 0.35, w: 2, d: 3, color: 'ghost' },
+    { x: 2, y: 0, z: 0.35, w: 2, d: 3, color: 'ghost' },
+  ];
+  const prior: Brick[] = [];
+  for (let k = 0; k < i; k++) prior.push({ x: k % 2 === 0 ? 0 : 2, y: 0, z: 1.35 + Math.floor(k / 2), w: 2, d: 3, color: 'ghost' });
+  const current: Brick = { x: i % 2 === 0 ? 0 : 2, y: 0, z: 1.35 + Math.floor(i / 2), w: 2, d: 3, color: 'blue', drop: 3 };
+  return [...base, ...prior, current];
+};
+
+const partBrick = (color: Brick['color']): Brick[] => [{ x: 0, y: 0, z: 0, w: 2, d: 2, color }];
+const partColors: Brick['color'][] = ['yellow', 'blue', 'white', 'piece'];
+
+// Previous builds: each sector is a small assembled model, ghosted, the names printed on its tiles.
+const buildModel = (names: string[]): Brick[] => {
+  const cols = 2;
+  const rows = Math.ceil(names.length / cols);
+  const out: Brick[] = [{ x: 0, y: 0, z: 0, w: cols * 3, d: rows * 2, h: 0.35, color: 'ghost' }];
+  names.forEach((n, i) => out.push({ x: (i % cols) * 3, y: Math.floor(i / cols) * 2, z: 0.35, w: 3, d: 2, color: 'ghost', label: n, tile: true }));
+  return out;
+};
+---
+
+<!-- ============ STEP 1 — the first viewport ============ -->
+<section class="spread spread--one" aria-labelledby="step1-title">
+  <div class="container spread-grid">
+    <div class="spread-left">
+      <div class="step-head area-head">
+        <span class="step-number tnum" aria-hidden="true">1</span>
+        <h1 id="step1-title">{t.hero.title}</h1>
+      </div>
+      <p class="lead area-lead">{t.hero.lead}</p>
+      <figure class="drawing drawing--hero area-drawing">
+        <BrickDiagram bricks={programme} unit={26} labelledBy="step1-drawing-caption" />
+        <figcaption id="step1-drawing-caption" class="sr-only">{t.hero.drawingAlt}</figcaption>
+      </figure>
+      <p class="drawing-legend" aria-hidden="true">{t.programBlocks.join(' · ')}</p>
+    </div>
+
+    <aside class="spread-right">
+      <div class="callout area-callout" aria-label={t.callout.scaleLabel}>
+        <span class="callout-scale">{t.callout.scaleLabel}</span>
+        <div class="callout-brick">
+          <BrickDiagram bricks={partBrick('piece')} unit={22} />
+        </div>
+        <p class="callout-name">{t.callout.name}</p>
+        <p class="callout-role">{t.callout.role}</p>
+        <p class="callout-meta"><span class="tnum">{t.callout.years}</span> · {t.callout.company}</p>
+        <ul class="callout-parts" aria-label={t.callout.partsLabel}>
+          {t.inventory.items.map((item, i) => (
+            <li><span class="callout-part-brick"><BrickDiagram bricks={partBrick(partColors[i % partColors.length])} unit={8} /></span><span class="tnum">1×</span> {item.title}</li>
+          ))}
+        </ul>
+      </div>
+
+      <a href={t.hero.ctaHref} class="page-turn area-cta">
+        <span class="page-turn-step">2. {t.stepWord}</span>
+        <span class="page-turn-label">{t.hero.ctaLabel}</span>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ STEPS 2–5 ============ -->
+<section id="steps" class="section steps" aria-labelledby="steps-title">
+  <div class="container">
+    <h2 id="steps-title">{t.stepsHeading}</h2>
+    <ol class="step-list" start="2">
+      {t.steps.map((s, i) => (
+        <li class="step">
+          <div class="step-head">
+            <span class="step-number step-number--small tnum" aria-hidden="true">{i + 2}</span>
+            <h3>{s.title}</h3>
+          </div>
+          <p class="step-time tnum">{s.time}</p>
+          <p class="step-body">{s.body}</p>
+          <div class="drawing drawing--step">
+            <BrickDiagram bricks={stepDrawing(i)} unit={20} />
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<!-- ============ PARTS INVENTORY ============ -->
+<section class="section inventory" aria-labelledby="inventory-title">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="inventory-title">{t.inventory.heading}</h2>
+      <p class="section-note">{t.inventory.note}</p>
+    </div>
+    <ul class="parts-list">
+      {t.inventory.items.map((item, i) => (
+        <li class="part">
+          <div class="part-brick"><BrickDiagram bricks={partBrick(partColors[i % partColors.length])} unit={16} /></div>
+          <span class="part-count tnum">1×</span>
+          <div class="part-text">
+            <h3 class="part-title">{item.title}</h3>
+            <p class="part-body">{item.body}</p>
+            {item.href ? <a href={item.href} class="part-link">{item.linkLabel} →</a> : null}
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<!-- ============ PREVIOUS BUILDS ============ -->
+<section class="section builds" aria-labelledby="builds-title">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="builds-title">{t.builds.heading}</h2>
+      <p class="section-note">{t.builds.note}</p>
+    </div>
+    <div class="builds-grid">
+      {t.builds.groups.map((g) => (
+        <figure class="build-group">
+          <div class="build-model"><BrickDiagram bricks={buildModel(g.names)} unit={20} labelledBy={`build-${g.sector.replace(/\W+/g, '-').toLowerCase()}`} /></div>
+          <figcaption id={`build-${g.sector.replace(/\W+/g, '-').toLowerCase()}`} class="build-caption">
+            <span class="build-sector">{g.sector}</span>
+            <span class="build-names">{g.names.join(' · ')}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ============ BACK-COVER NOTE (testimonial) ============ -->
+<section class="section note" aria-labelledby="quote-title">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="quote-title">{t.quote.heading}</h2>
+    </div>
+    <Testimonial items={t.quote.items} />
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section faq" aria-labelledby="faq-title">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="faq-title">{t.faq.heading}</h2>
+      <p class="section-note">{t.faqNote}</p>
+    </div>
+    <FAQ items={t.faq.items} />
+  </div>
+</section>
+
+<!-- ============ CLOSE ============ -->
+<section class="section closing" aria-labelledby="closing-title">
+  <div class="container closing-grid">
+    <div>
+      <h2 id="closing-title">{t.closing.title}</h2>
+      <p class="closing-body">{t.closing.body}</p>
+    </div>
+    <a href={t.closing.ctaHref} class="btn-primary closing-cta">
+      {t.closing.ctaLabel}
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<style>
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  /* ---------- Step 1 spread ---------- */
+  .spread--one {
+    padding-block: var(--space-2xl) var(--space-3xl);
+  }
+  .spread-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+    column-gap: var(--space-2xl);
+    align-items: start;
+  }
+  .spread-left,
+  .spread-right {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .spread-right {
+    position: sticky;
+    top: calc(var(--stud) * 10);
+  }
+  .step-head {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-lg);
+  }
+  .step-number {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: clamp(5rem, 12vw, 9rem);
+    line-height: 0.8;
+    letter-spacing: -0.04em;
+    color: var(--color-ink);
+    flex: none;
+  }
+  .step-number--small {
+    font-size: clamp(3rem, 6vw, 4.5rem);
+  }
+  .spread--one h1 {
+    max-width: 16ch;
+    padding-top: 0.25em;
+  }
+  .lead {
+    max-width: 58ch;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: var(--color-ink);
+  }
+  .drawing--hero {
+    max-width: 580px;
+  }
+  .drawing-legend {
+    display: none;
+  }
+
+  /* 1:1 call-out box */
+  .callout {
+    background: var(--color-callout);
+    border: var(--keyline);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    position: relative;
+  }
+  .callout-scale {
+    position: absolute;
+    top: calc(-1 * var(--stud) * 1.5);
+    left: var(--space-md);
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    background: var(--color-callout);
+    border: var(--keyline);
+    border-radius: var(--radius-sm);
+    padding: 2px 8px;
+  }
+  .callout-parts {
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: var(--keyline-thin);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9375rem;
+  }
+  .callout-parts li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .callout-part-brick {
+    width: 28px;
+    flex: none;
+  }
+  .callout-brick {
+    width: 120px;
+    margin-block: var(--space-sm) var(--space-md);
+  }
+  .callout-name {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 1.5rem;
+    line-height: 1.1;
+  }
+  .callout-role {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.0625rem;
+    color: var(--color-piece);
+    margin-top: var(--space-xs);
+  }
+  .callout-meta {
+    font-size: 1rem;
+    color: var(--color-ink-soft);
+    margin-top: var(--space-sm);
+  }
+
+  /* page-turn: the primary action */
+  .page-turn {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    column-gap: var(--space-md);
+    align-items: center;
+    background: var(--color-piece);
+    color: var(--color-callout);
+    border: var(--keyline);
+    border-radius: var(--radius-md);
+    padding: var(--space-md) var(--space-lg);
+    text-decoration: none;
+    transition: background var(--transition-base), transform var(--transition-base);
+  }
+  .page-turn:hover {
+    background: var(--color-piece-deep);
+    transform: translateX(4px);
+  }
+  .page-turn svg {
+    grid-row: 1 / span 2;
+    grid-column: 2;
+  }
+  .page-turn-step {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    letter-spacing: 0.04em;
+    opacity: 0.9;
+  }
+  .page-turn-label {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 1.375rem;
+    line-height: 1.1;
+  }
+
+  /* ---------- Steps 2–5 ---------- */
+  .steps h2,
+  .section-head h2 {
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-sm);
+    border-bottom: var(--keyline);
+  }
+  .step-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-xl);
+    counter-reset: none;
+  }
+  .step {
+    background: transparent;
+    border: var(--keyline);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+  }
+  .step .step-head {
+    gap: var(--space-md);
+    align-items: baseline;
+  }
+  .step h3 {
+    font-size: 1.375rem;
+  }
+  .step-time {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: var(--color-ink-soft);
+    margin-top: var(--space-xs);
+  }
+  .step-body {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: var(--space-sm);
+    flex: 1;
+  }
+  .drawing--step {
+    width: 100%;
+    max-width: 260px;
+    margin-top: var(--space-md);
+    align-self: center;
+  }
+
+  /* ---------- Inventory (parts list, no card chrome) ---------- */
+  .section-head {
+    max-width: 72ch;
+  }
+  .section-note {
+    font-size: 1rem;
+    color: var(--color-ink-soft);
+    margin-top: calc(-1 * var(--space-md));
+    margin-bottom: var(--space-xl);
+  }
+  .parts-list {
+    border-top: var(--keyline);
+    max-width: 880px;
+  }
+  .part {
+    display: grid;
+    grid-template-columns: 72px 48px 1fr;
+    gap: var(--space-md);
+    align-items: start;
+    padding-block: var(--space-lg);
+    border-bottom: var(--keyline);
+  }
+  .part-brick {
+    width: 64px;
+  }
+  .part-count {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 1.25rem;
+    padding-top: 2px;
+  }
+  .part-title {
+    font-size: 1.25rem;
+  }
+  .part-body {
+    font-size: 1rem;
+    color: var(--color-ink-soft);
+    line-height: 1.55;
+    margin-top: var(--space-xs);
+    max-width: 60ch;
+  }
+  .part-link {
+    display: inline-block;
+    margin-top: var(--space-sm);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9375rem;
+  }
+
+  /* ---------- Previous builds: ghosted models ---------- */
+  .builds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-2xl);
+    align-items: end;
+  }
+  .build-group {
+    margin: 0;
+  }
+  .build-model {
+    max-width: 320px;
+  }
+  .build-caption {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: var(--space-md);
+    padding-top: var(--space-sm);
+    border-top: var(--keyline);
+  }
+  .build-sector {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .build-names {
+    font-size: 0.9375rem;
+    color: var(--color-ink-soft);
+  }
+
+  /* ---------- Closing ---------- */
+  .closing-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+  .closing-grid {
+    border: var(--keyline);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+  }
+  .closing-body {
+    color: var(--color-ink-soft);
+    max-width: 48ch;
+    margin-top: var(--space-md);
+  }
+  .closing-cta {
+    font-size: 1.125rem;
+    padding: 16px 28px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .spread-grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+    .spread-left,
+    .spread-right {
+      display: contents;
+    }
+    .area-head { order: 1; }
+    .area-lead { order: 2; }
+    .area-cta { order: 3; }
+    .area-drawing { order: 4; }
+    .drawing-legend { order: 5; display: block; font-size: 0.9375rem; color: var(--color-ink-soft); margin-top: calc(-1 * var(--space-sm)); }
+    .area-callout { order: 6; }
+    .closing-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .step-head {
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .step-number {
+      font-size: 4.5rem;
+    }
+    .step .step-head {
+      flex-direction: row;
+      align-items: baseline;
+    }
+    .drawing--step {
+      align-self: flex-start;
+    }
+  }
+</style>

@@ -9,8 +9,8 @@ const publicationUrl = 'https://andrs-newsletter-366e2f.beehiiv.com/subscribe';
 const t = {
   heading: lang === 'hu' ? 'Iratkozzon fel hírlevelünkre' : 'Subscribe to our newsletter',
   description: lang === 'hu'
-    ? 'AI tippek és gyakorlati tanácsok IT-projektmenedzsmenthez — közvetlenül a postaládájába.'
-    : 'AI tips and practical advice for IT project management — delivered to your inbox.',
+    ? 'AI-tippek és gyakorlati tanácsok IT-projektmenedzsmenthez, közvetlenül a postaládájába.'
+    : 'AI tips and practical advice for IT project management, delivered to your inbox.',
   placeholder: lang === 'hu' ? 'Email cím' : 'Email address',
   button: lang === 'hu' ? 'Feliratkozás' : 'Subscribe',
   note: lang === 'hu' ? 'Nincs spam. Bármikor leiratkozhat.' : 'No spam. Unsubscribe anytime.',
@@ -44,9 +44,9 @@ const t = {
   }
 
   .newsletter-desc {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--color-ink-soft);
     margin-bottom: var(--space-xl);
-    max-width: 500px;
+    max-width: 48ch;
     margin-inline: auto;
   }
 
@@ -60,22 +60,22 @@ const t = {
   .signup-form input {
     flex: 1;
     padding: 12px 16px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: var(--keyline);
     border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--color-white);
+    background: var(--color-callout);
+    color: var(--color-ink);
     font-family: var(--font-body);
-    font-size: 0.9375rem;
-    transition: border-color var(--transition-base);
+    font-size: 1rem;
+    caret-color: var(--color-piece);
   }
 
   .signup-form input:focus {
     outline: none;
-    border-color: var(--color-cta);
+    box-shadow: 0 0 0 3px var(--color-page), 0 0 0 5px var(--color-ink);
   }
 
   .signup-form input::placeholder {
-    color: rgba(255, 255, 255, 0.45);
+    color: var(--color-ink-soft);
   }
 
   .signup-form button {
@@ -83,26 +83,26 @@ const t = {
     align-items: center;
     gap: var(--space-xs);
     padding: 12px 24px;
-    background: var(--color-cta);
-    color: var(--color-primary);
-    border: none;
+    background: var(--color-piece);
+    color: var(--color-callout);
+    border: var(--keyline);
     border-radius: var(--radius-md);
     font-family: var(--font-heading);
-    font-size: 0.9375rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 700;
     cursor: pointer;
     white-space: nowrap;
     transition: background var(--transition-base);
   }
 
   .signup-form button:hover {
-    background: var(--color-cta-hover);
+    background: var(--color-piece-deep);
   }
 
   .signup-note {
     margin-top: var(--space-sm);
-    font-size: 0.8125rem;
-    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.9375rem;
+    color: var(--color-ink-soft);
   }
 
   @media (max-width: 480px) {

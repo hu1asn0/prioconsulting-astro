@@ -1,0 +1,198 @@
+---
+/**
+ * BrickDiagram — authored isometric build-instruction drawing.
+ * Keyline + flat fill, studs on top, prior assembly ghosted, the new piece solid.
+ * Pure SVG generated at build time; no runtime script.
+ */
+export interface Brick {
+  /** stud coordinates (x right-down, y left-down) and level z (1 = one brick height) */
+  x: number; y: number; z: number;
+  /** size in studs */
+  w: number; d: number;
+  /** height in brick units (1 = brick, 0.35 = plate) */
+  h?: number;
+  color?: 'ghost' | 'piece' | 'blue' | 'gray' | 'white' | 'yellow';
+  label?: string;
+  /** the new piece: drawn seated, animated dropping from `drop` brick-heights above; gets the guide arrow */
+  drop?: number;
+  /** printed tile: no studs, the label sits on the top face */
+  tile?: boolean;
+}
+
+interface Props {
+  bricks: Brick[];
+  /** px per stud */
+  unit?: number;
+  class?: string;
+  /** decorative by default; pass a caption id when the drawing carries meaning the text does not */
+  labelledBy?: string;
+}
+
+const { bricks, unit = 26, class: className = '', labelledBy } = Astro.props;
+
+const C = 0.866; // cos 30°
+const S = 0.5;   // sin 30°
+const HH = 1.2;  // brick height in stud units
+
+const px = (x: number, y: number, z: number) => [
+  (x - y) * unit * C,
+  (x + y) * unit * S - z * unit * HH,
+] as const;
+
+const palette: Record<NonNullable<Brick['color']>, { top: string; left: string; right: string; stroke: string; opacity: number; label: string }> = {
+  piece:  { top: '#E14C60', left: '#D7263D', right: '#B31F33', stroke: '#111111', opacity: 1, label: '#111111' },
+  blue:   { top: '#3E78C2', left: '#1E5AA8', right: '#174A8C', stroke: '#111111', opacity: 1, label: '#111111' },
+  gray:   { top: '#C3CAD2', left: '#9AA5B1', right: '#7E8994', stroke: '#111111', opacity: 1, label: '#111111' },
+  white:  { top: '#FFFFFF', left: '#F1F1F1', right: '#DADADA', stroke: '#111111', opacity: 1, label: '#111111' },
+  yellow: { top: '#F9D34A', left: '#F5C518', right: '#D9AB0F', stroke: '#111111', opacity: 1, label: '#111111' },
+  ghost:  { top: '#FFFFFF', left: '#FFFFFF', right: '#FFFFFF', stroke: '#111111', opacity: 0.38, label: '#2A3340' },
+};
+
+// painter's order: farther first
+const ordered = [...bricks].sort((a, b) => (a.x + a.y + a.z) - (b.x + b.y + b.z));
+
+// bounds
+let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+for (const b of bricks) {
+  const h = b.h ?? 1;
+  const zTop = b.z + h + (b.drop ?? 0);
+  const corners = [
+    px(b.x, b.y, b.z), px(b.x + b.w, b.y, b.z), px(b.x, b.y + b.d, b.z), px(b.x + b.w, b.y + b.d, b.z),
+    px(b.x, b.y, zTop), px(b.x + b.w, b.y, zTop), px(b.x, b.y + b.d, zTop), px(b.x + b.w, b.y + b.d, zTop),
+  ];
+  for (const [cx, cy] of corners) {
+    minX = Math.min(minX, cx); maxX = Math.max(maxX, cx);
+    minY = Math.min(minY, cy); maxY = Math.max(maxY, cy);
+  }
+}
+const labelRoom = bricks.some((b) => b.label && !b.tile && !b.drop) ? unit * 1.2 : 0;
+const labelRoomBelow = bricks.some((b) => b.label && b.drop) ? unit * 1.3 : 0;
+const pad = unit * 0.6;
+const vbX = minX - pad, vbY = minY - pad - labelRoom, vbW = maxX - minX + pad * 2, vbH = maxY - minY + pad * 2 + labelRoom + labelRoomBelow;
+
+const poly = (pts: ReadonlyArray<readonly [number, number]>) => pts.map(([x, y]) => `${x.toFixed(1)},${y.toFixed(1)}`).join(' ');
+
+function faces(b: Brick) {
+  const h = b.h ?? 1;
+  const { x, y, z, w, d } = b;
+  return {
+    top:   poly([px(x, y, z + h), px(x + w, y, z + h), px(x + w, y + d, z + h), px(x, y + d, z + h)]),
+    left:  poly([px(x, y + d, z), px(x + w, y + d, z), px(x + w, y + d, z + h), px(x, y + d, z + h)]),
+    right: poly([px(x + w, y, z), px(x + w, y + d, z), px(x + w, y + d, z + h), px(x + w, y, z + h)]),
+  };
+}
+
+function studs(b: Brick) {
+  const h = b.h ?? 1;
+  const out: { cx: number; cy: number }[] = [];
+  for (let i = 0; i < b.w; i++) for (let j = 0; j < b.d; j++) {
+    const [cx, cy] = px(b.x + i + 0.5, b.y + j + 0.5, b.z + h);
+    out.push({ cx, cy });
+  }
+  return out;
+}
+
+const rx = unit * 0.3, ry = unit * 0.17;
+const strokeW = Math.max(1.5, unit / 14);
+---
+
+<svg
+  class={`brick-diagram ${className}`}
+  viewBox={`${vbX.toFixed(1)} ${vbY.toFixed(1)} ${vbW.toFixed(1)} ${vbH.toFixed(1)}`}
+  width={vbW.toFixed(0)}
+  height={vbH.toFixed(0)}
+  role={labelledBy ? 'img' : undefined}
+  aria-labelledby={labelledBy}
+  aria-hidden={labelledBy ? undefined : 'true'}
+  xmlns="http://www.w3.org/2000/svg"
+>
+  {ordered.map((b) => {
+    const p = palette[b.color ?? 'gray'];
+    const f = faces(b);
+    const h = b.h ?? 1;
+    const [tcx, tcy] = px(b.x + b.w / 2, b.y + b.d / 2, b.z + h);
+    const dropPx = (b.drop ?? 0) * unit * HH;
+    const arrowTop = tcy - dropPx + unit * 0.2;
+    const arrowEnd = tcy - unit * 0.55;
+    return (
+      <>
+        {b.drop ? (
+          <g class="guide" aria-hidden="true">
+            <polygon
+              points={poly([px(b.x, b.y, b.z), px(b.x + b.w, b.y, b.z), px(b.x + b.w, b.y + b.d, b.z), px(b.x, b.y + b.d, b.z)])}
+              fill="none" stroke="#111111" stroke-width={strokeW} stroke-dasharray={`${unit * 0.22} ${unit * 0.16}`} stroke-linejoin="round"
+            />
+            <line x1={tcx} y1={arrowTop} x2={tcx} y2={arrowEnd - unit * 0.6} stroke="#111111" stroke-width={Math.max(strokeW * 1.6, unit * 0.11)} stroke-dasharray={`${unit * 0.32} ${unit * 0.22}`} stroke-linecap="round" />
+            <polygon points={`${tcx - unit * 0.5},${arrowEnd - unit * 0.72} ${tcx + unit * 0.5},${arrowEnd - unit * 0.72} ${tcx},${arrowEnd}`} fill="#111111" />
+          </g>
+        ) : null}
+        <g
+          class={b.drop ? 'brick brick--drop' : 'brick'}
+          style={b.drop ? `--drop:${dropPx.toFixed(1)}px` : undefined}
+          opacity={p.opacity}
+          stroke={p.stroke}
+          stroke-width={strokeW}
+          stroke-linejoin="round"
+        >
+          <polygon points={f.left} fill={p.left} />
+          <polygon points={f.right} fill={p.right} />
+          <polygon points={f.top} fill={p.top} />
+          {b.tile ? null : studs(b).map((s) => (
+            <ellipse cx={s.cx.toFixed(1)} cy={s.cy.toFixed(1)} rx={rx} ry={ry} fill={p.top} />
+          ))}
+{b.drop && b.label ? (
+            <text
+              x={tcx.toFixed(1)}
+              y={(px(b.x + b.w, b.y + b.d, b.z)[1] + unit * 1.0).toFixed(1)}
+              text-anchor="middle"
+              fill="#111111"
+              stroke="none"
+              font-family="Archivo, sans-serif"
+              font-weight="700"
+              font-size={(unit * 0.55).toFixed(1)}
+              letter-spacing="0.02em"
+            >{b.label}</text>
+          ) : null}
+        </g>
+          {b.drop ? (
+            <polygon class="target" points={f.top} fill="none" stroke="#111111" stroke-width={Math.max(strokeW * 1.2, unit * 0.09)} stroke-dasharray={`${unit * 0.26} ${unit * 0.18}`} stroke-linejoin="round" transform={`translate(0, ${(-unit * 0.28).toFixed(1)})`} />
+          ) : null}
+          {b.label && !b.drop ? (
+            <text
+              class={b.tile ? 'tile-label' : undefined}
+              x={(b.drop ? px(b.x + b.w, b.y + b.d, b.z)[0] - (b.w - b.d) * unit * C / 2 : tcx).toFixed(1)}
+              y={(b.drop ? px(b.x + b.w, b.y + b.d, b.z)[1] + unit * 1.0 : b.tile ? tcy + unit * 0.16 : tcy - unit * 0.75).toFixed(1)}
+              text-anchor="middle"
+              fill={b.color === 'ghost' ? '#2A3340' : '#111111'}
+              stroke="none"
+              font-family="Archivo, sans-serif"
+              font-weight="700"
+              font-size={(b.tile ? unit * 0.34 : unit * 0.55).toFixed(1)}
+              letter-spacing="0.02em"
+            >{b.label}</text>
+          ) : null}
+      </>
+    );
+  })}
+</svg>
+
+<style>
+  .brick-diagram {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  .brick--drop {
+    animation: brick-drop 900ms var(--ease-drop) 250ms both;
+  }
+  @keyframes brick-drop {
+    from { transform: translateY(calc(-1 * var(--drop))); }
+    to   { transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .brick--drop { animation: none; }
+  }
+  @media (max-width: 600px) {
+    .brick-diagram .tile-label { display: none; }
+  }
+</style>

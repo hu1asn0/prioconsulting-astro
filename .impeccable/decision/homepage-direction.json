@@ -1,0 +1,151 @@
+{
+  "title": "Válaszd ki a főoldal vizuális világát",
+  "question": "A kocka a Helyszíni füzetet osztotta. Tartsd meg, válassz alternatívát, vagy dobass újra.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "A helyszíni füzet",
+      "kicker": "THE ROLL",
+      "lineage": "mérnöki / geodéta terepi munkafüzet — narancs vászonkötés, kockás lap, ceruza és piros irón",
+      "thesis": "A site nem brosúra, hanem egy mérnök munkafüzete: minden állítás keltezett, mért bejegyzés.",
+      "palette": ["#F26B1D", "#2B2B2B", "#EDEBE6", "#C8102E"],
+      "materials": ["narancs buckram kötés (a nyitó képernyő maga a borító)", "kockás rács a belső oldalakon", "grafit szöveg", "piros irón a javításokhoz és a kért döntéshez"],
+      "viewport": "Teljes szélességű narancs borító, benyomott címmel: „Prio Consulting · Munkafüzet”; alatta egyetlen grafit sor a pozicionálással, a CTA egy kilógó papír regiszterfül. Lejjebb a füzet kinyílik: kockás lapokon keltezett bejegyzések (MOL, E.ON, a futó rendszerek), piros irónnal a kért döntés.",
+      "risk": "Ha a betű kézírást játszik vagy a lap krémre csúszik, kézműves-műhelynek olvassák, nem programvezetőnek — a borító narancsának kell vinnie a lapot, nem a papírnak.",
+      "raised": [
+        {"from": "challenger-vu", "raise": "A hat futó rendszer azonos vonalzott sorokként ismétlődik — a bizonyítékot a sor végigpásztázásával olvasod, nem egyenként."},
+        {"from": "challenger-bazaar", "raise": "Minden bejegyzés eredetjegyet visel: dátum, forrás, hol ellenőrizhető."},
+        {"from": "challenger-linocut", "raise": "Egy lap = egy állítás; a görgetés lapokat fordít, nem szekciókat pakol egymásra."},
+        {"from": "challenger-viewfinder", "raise": "A borító közepe üres marad a tárgynak: egyetlen sor, egyetlen fül, semmi más."},
+        {"from": "challenger-exposure", "raise": "Számok tabuláris számjegyekkel; a szürkék egyetlen rögzített tónuslépcsőből."}
+      ],
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "narancs borító", "x": 0, "y": 0, "w": 12, "h": 5, "accent": true},
+        {"label": "cím + egy sor", "x": 1, "y": 1, "w": 8, "h": 2},
+        {"label": "regiszterfül CTA", "x": 10, "y": 3, "w": 2, "h": 1, "accent": true},
+        {"label": "kockás lap: keltezett bejegyzések", "x": 0, "y": 5, "w": 8, "h": 5},
+        {"label": "margó: eredetjegyek", "x": 8, "y": 5, "w": 4, "h": 5}
+      ]}
+    },
+    {
+      "id": "model-pick",
+      "label": "A steering egyoldalas",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "A3-as steering committee státuszlap — RAG-lámpák, mérföldkő-sáv, egy kért döntés",
+      "thesis": "A főoldal az a státuszlap, amit a CIO amúgy is olvas: állapot, mérföldkő, három kockázat, egy döntés.",
+      "palette": ["#0B1F3A", "#FFFFFF", "#2E7D32", "#F9A825", "#C62828"],
+      "materials": ["vonalazott A3-lap", "RAG-pecsétek", "mérföldkő-sáv", "aláírásmező"],
+      "viewport": "Egyetlen lap: fejléc-sávban név és szerep, alatta a négy szakasz mérföldkő-sávja, három RAG-sor (SAP/energetika core, Applied AI, futó bizonyíték), és egy bekeretezett „Kért döntés” mező — ez a CTA.",
+      "risk": "Ez a legismerősebb irány: a saját rangsorom első helye, és pont ezért néz ki úgy, mint minden PMO-prezentáció. A fegyelme igazi, a meglepetése nulla.",
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "fejléc: név · szerep", "x": 0, "y": 0, "w": 12, "h": 1, "accent": true},
+        {"label": "mérföldkő-sáv (4 szakasz)", "x": 0, "y": 1, "w": 12, "h": 2},
+        {"label": "RAG-sor: core", "x": 0, "y": 3, "w": 8, "h": 2},
+        {"label": "RAG-sor: applied AI", "x": 0, "y": 5, "w": 8, "h": 2},
+        {"label": "RAG-sor: bizonyíték", "x": 0, "y": 7, "w": 8, "h": 2},
+        {"label": "Kért döntés (CTA)", "x": 8, "y": 3, "w": 4, "h": 6, "accent": true}
+      ]}
+    },
+    {
+      "id": "challenger-vu",
+      "label": "A műszersor",
+      "verdict": "competitive",
+      "lineage": "keverőpult VU-műszerhídja — húsz tű, ami ugyanarra az ütemre dől a pirosba",
+      "thesis": "A hat futó rendszer hat azonos műszer egy sorban; a látogató a sor végigpásztázásával olvassa, hogy minden él.",
+      "palette": ["#F3EBD9", "#1A1A1A", "#8B5A2B", "#C62828"],
+      "materials": ["elefántcsont műszerlap üveg mögött", "fekete skálaív", "dió-acél keret", "a nulla fölötti ív az egyetlen piros"],
+      "viewport": "A nyitó képernyő egy műszerhíd: hat azonos VU-lap, alattuk csíkcímkék a rendszerek nevével; a tűk valódi ballisztikával (300 ms integrálás) mozdulnak a napi futások számára. A név és a CTA a pult peremén.",
+      "case": "Tartja az érthetőség-tengelyt (egy pillantással látszik: minden üzemel, ez a bizonyíték) — de a CIO nem hangmérnök, az azonosulás gyenge; és a hero-metrika sablon kockázata itt a legnagyobb.",
+      "risk": "Ha a tűk nem valódi adatot mutatnak, dísz lesz belőle — a craft-floor pont ezt tiltja.",
+      "hero": "https://impeccable.style/worlds/cards/signals-instruments-vu-meter-bridge-hero.webp",
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "pult perem: név · CTA", "x": 0, "y": 0, "w": 12, "h": 2},
+        {"label": "6× VU műszer", "x": 0, "y": 2, "w": 12, "h": 5, "accent": true},
+        {"label": "csíkcímkék: rendszerek", "x": 0, "y": 7, "w": 12, "h": 1},
+        {"label": "szolgáltatások", "x": 0, "y": 8, "w": 12, "h": 2}
+      ]}
+    },
+    {
+      "id": "challenger-viewfinder",
+      "label": "A kamera-kereső",
+      "verdict": "declined",
+      "lineage": "camcorder viewfinder HUD — sarok-keretek, zoom-sáv, zebra-csíkok",
+      "thesis": "A keretek arra a dologra ugranak, amiről dönteni kell.",
+      "palette": ["#000000", "#FFFFFF", "#FFB000"],
+      "materials": ["szegmentált OSD-betű", "fekete letterbox", "zebra-csík"],
+      "viewport": "Teljes képernyős kép fölött OSD-réteg; a közép mindig üres a tárgynak.",
+      "case": "Rosszul olvad össze: a döntéshozó nem azonosul a kamerával, és a HUD élő képet feltételez, amink nincs — mindkét tengelyen veszít.",
+      "kept": "Üres közép a tárgynak; olvasatok sarkonként egy.",
+      "risk": "Kép nélkül csak keret marad.",
+      "hero": "https://impeccable.style/worlds/cards/pop-culture-shelf-viewfinder-bracket-hud-hero.webp"
+    },
+    {
+      "id": "challenger-linocut",
+      "label": "A linómetszet-plakát",
+      "verdict": "declined",
+      "lineage": "műhely-linómetszet sztrájkplakát — egy követelés, egy lap",
+      "thesis": "Minden lap egyetlen követelés, ugyanazzal a késsel vágva.",
+      "palette": ["#111111", "#E9DDC4"],
+      "materials": ["fekete relief-festék", "manila papír", "véső-nyomok"],
+      "viewport": "Alulról nézett monumentális figura, alatta a lapba vágott betű.",
+      "case": "A sztrájkplakát regisztere egy Kft.-tanácsadónak téves; a figura pedig nem létező képanyag — mindkét tengelyen veszít.",
+      "kept": "Egy lap = egy állítás; a navigáció lapok között mozog, nem lapon belül.",
+      "risk": "Irónia nélkül harsány, iróniával olcsó.",
+      "hero": "https://impeccable.style/worlds/cards/posters-covers-sleeves-taller-grafica-linocut-hero.webp"
+    },
+    {
+      "id": "challenger-neon",
+      "label": "A neoncső-áramkör",
+      "verdict": "declined",
+      "lineage": "kézzel hajlított neonfelirat mint folytonos gázkisülési áramkör",
+      "thesis": "Egyetlen folytonos üvegvonal, ami egy szóként gyullad fel.",
+      "palette": ["#0B0B12", "#2E6BFF", "#FF3B30"],
+      "materials": ["üvegcső", "kobalt kisülés", "elektróda-vörös"],
+      "viewport": "Sötét szoba, egy folytonos script-vonal, ami a görgetéssel gyullad.",
+      "case": "Cégér-esztétika egy vállalati programvezetőnél: azonosulás nincs, az érthetőséget a dekoráció viszi el.",
+      "kept": "Egy folytonos vonal vezeti végig az olvasót — a történet nem szakad szekciókra.",
+      "risk": "A neon a sötét-navy-glow AI-klisé rokona.",
+      "hero": "https://impeccable.style/worlds/cards/magnetism-electricity-plasma-hand-bent-neon-circuit-hero.webp"
+    },
+    {
+      "id": "challenger-bazaar",
+      "label": "A holdárnyék-bazár",
+      "verdict": "declined",
+      "lineage": "szürreális éjszakai piac, ahol árnyékokat cserélnek eredetjeggyel",
+      "thesis": "Minden portéka a saját származási cédulájával utazik.",
+      "palette": ["#0E1424", "#1A1A1A", "#C9A227", "#EAF2FF"],
+      "materials": ["holdfényes kék-fekete", "sáfrány ponyva", "krétás árcédula"],
+      "viewport": "Standok egy sorban, mindegyiken egy cédula: honnan, mikor, milyen hosszú.",
+      "case": "Álomvilág egy CIO-nak: az azonosulás nulla, az érthetőség a metaforán bukik.",
+      "kept": "Eredetjegy minden tételen — dátum, forrás, ellenőrizhetőség.",
+      "risk": "Tartalom nélkül díszlet.",
+      "hero": "https://impeccable.style/worlds/cards/dream-surreal-impossible-worlds-moon-shadow-bazaar-hero.webp"
+    },
+    {
+      "id": "challenger-exposure",
+      "label": "A sötétkamra-expozíciós lap",
+      "verdict": "declined",
+      "lineage": "nagyítógép alatti expozíciós jegyzőkönyv — tizenegy fokozatú zónalépcső, sraffozott fóliák",
+      "thesis": "Átlátszó lapok egymáson; a sraffozás terhelés, a keresztsraff ütközés.",
+      "palette": ["#111111", "#3A3A3A", "#7A7A7A", "#BDBDBD", "#F2F2F2", "#E6007E"],
+      "materials": ["háttérvilágított semlegesek", "pauszpapír-réteg", "egyetlen magenta a szűréshez"],
+      "viewport": "Ferdén egymásra tett lapok; a navigáció lapot csúsztat, nem cserél.",
+      "case": "Operate-világ egy Persuade-felületre: a fotós-labor nyelvét a döntéshozó nem beszéli, a réteg-csúsztatás elrejti az ajánlatot.",
+      "kept": "A szürkék egyetlen tizenegy lépcsős tónuslépcsőből; mennyiségek tabuláris monóban.",
+      "risk": "Szép rendszer, rossz szoba.",
+      "hero": "https://impeccable.style/worlds/cards/operate-b-exposure-record-zone-sheets-hero.webp"
+    }
+  ],
+  "reroll": {"registers": ["safer", "bolder"]},
+  "buildPath": {"value": "code", "toggle": false},
+  "canon": true,
+  "canonCard": {
+    "label": "A kategória-standard",
+    "thesis": "Amit ez a kategória szállít — sötét hero, három szolgáltatás-kártya, idézet, GYIK — hibátlanul kivitelezve.",
+    "palette": ["#0F172A", "#FFFFFF", "#2563EB"],
+    "materials": ["tiszta rács", "kártyák", "szolid szerif nélküli betű"],
+    "viewport": "Az elrendezés, amit a látogató vár, teljes mesterségbeli szinten.",
+    "risk": "Szándékosan megkülönböztethetetlen a versenytársaktól."
+  },
+  "steer": true
+}

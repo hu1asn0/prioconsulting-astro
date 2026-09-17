@@ -102,134 +102,138 @@ const langSwitchLabel = lang === 'hu' ? 'EN' : 'HU';
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(15, 23, 42, 0.95);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(202, 138, 4, 0.15);
+    background: var(--color-page);
+    border-bottom: var(--keyline);
   }
-
   .nav-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-block: var(--space-md);
+    gap: var(--space-lg);
   }
-
   .nav-logo {
     text-decoration: none;
     cursor: pointer;
+    display: inline-flex;
   }
-
   .logo-text {
+    display: inline-block;
     font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-white);
-    letter-spacing: 0.15em;
+    font-size: 1rem;
+    font-weight: 900;
+    color: var(--color-ink);
+    letter-spacing: 0.08em;
+    background: transparent;
+    border: var(--keyline);
+    border-radius: var(--radius-sm);
+    padding: 6px 12px;
+    line-height: 1.2;
   }
-
   .nav-links {
     display: flex;
     align-items: center;
-    gap: var(--space-xl);
+    gap: var(--space-sm);
     list-style: none;
   }
-
   .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-family: var(--font-heading);
     font-size: 0.9375rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.8);
+    font-weight: 700;
+    color: var(--color-ink);
     text-decoration: none;
-    transition: color var(--transition-base);
+    padding: 8px 12px;
+    border: 2px solid transparent;
+    border-radius: var(--radius-sm);
+    transition: border-color var(--transition-base), background var(--transition-base);
     cursor: pointer;
-    position: relative;
   }
-
-  .nav-link::after {
+  .nav-link::before {
     content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--color-cta);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform var(--transition-base);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 2px solid var(--color-ink);
+    background: transparent;
+    transition: background var(--transition-base);
+    flex: none;
   }
-
-  .nav-link:hover,
+  .nav-link:hover {
+    border-color: var(--color-ink);
+    background: var(--color-callout-tint);
+  }
+  .nav-link.active::before,
+  .nav-link:hover::before {
+    background: var(--color-piece);
+  }
   .nav-link.active {
-    color: var(--color-cta);
+    border-color: var(--color-ink);
+    background: transparent;
   }
-
-  .nav-link.active::after,
-  .nav-link:hover::after {
-    transform: scaleX(1);
-  }
-
   .nav-lang-switch {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-heading);
     font-size: 0.8125rem;
-    font-weight: 600;
-    color: var(--color-cta);
-    border: 1.5px solid var(--color-cta);
+    font-weight: 700;
+    color: var(--color-ink);
+    border: var(--keyline);
     border-radius: var(--radius-sm);
-    padding: 4px 10px;
+    background: transparent;
+    padding: 5px 10px;
     text-decoration: none;
-    transition: all var(--transition-base);
+    transition: background var(--transition-base);
     cursor: pointer;
     letter-spacing: 0.05em;
+    margin-left: var(--space-sm);
   }
-
   .nav-lang-switch:hover {
-    background: var(--color-cta);
-    color: var(--color-primary);
+    background: var(--color-callout-tint);
   }
-
   .nav-hamburger {
     display: none;
-    background: none;
-    border: none;
-    color: var(--color-white);
+    background: transparent;
+    border: var(--keyline);
+    border-radius: var(--radius-sm);
+    color: var(--color-ink);
     cursor: pointer;
-    padding: var(--space-xs);
+    padding: 6px;
   }
-
   .hamburger-line {
     transition: all var(--transition-base);
     transform-origin: center;
   }
-
   @media (max-width: 768px) {
     .nav-hamburger {
       display: flex;
     }
-
     .nav-links {
       position: fixed;
       top: 0;
       right: -100%;
-      width: 280px;
+      width: min(320px, 90vw);
       height: 100dvh;
-      background: var(--color-primary);
+      background: var(--color-page);
+      border-left: var(--keyline);
       flex-direction: column;
       align-items: flex-start;
       padding: var(--space-3xl) var(--space-xl);
-      gap: var(--space-lg);
+      gap: var(--space-md);
       transition: right var(--transition-slow);
-      box-shadow: var(--shadow-xl);
     }
-
     .nav-links.open {
       right: 0;
     }
-
     .nav-link {
       font-size: 1.125rem;
+    }
+    .nav-lang-switch {
+      margin-left: 0;
+      margin-top: var(--space-md);
     }
   }
 </style>
