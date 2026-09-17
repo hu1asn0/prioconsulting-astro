@@ -19,7 +19,7 @@ const { items } = Astro.props;
         <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
       </button>
       <div class="faq-answer" data-faq-answer>
-        <p>{item.answer}</p>
+        <div class="faq-answer-inner"><p>{item.answer}</p></div>
       </div>
     </div>
   ))}
@@ -29,71 +29,58 @@ const { items } = Astro.props;
   .faq-list {
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
-    max-width: 800px;
+    max-width: 64ch;
     margin-inline: auto;
+    border-top: var(--keyline);
   }
-
   .faq-item {
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    transition: border-color var(--transition-base);
+    border-bottom: var(--keyline);
   }
-
-  .faq-item:hover {
-    border-color: rgba(202, 138, 4, 0.3);
-  }
-
   .faq-question {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: var(--space-md);
-    padding: var(--space-lg) var(--space-xl);
-    background: var(--color-white);
+    padding: var(--space-md) var(--space-sm);
+    background: transparent;
     border: none;
     font-family: var(--font-heading);
     font-size: 1.0625rem;
-    font-weight: 500;
-    color: var(--color-primary);
+    font-weight: 700;
+    color: var(--color-ink);
     text-align: left;
     cursor: pointer;
     transition: background var(--transition-base);
   }
-
   .faq-question:hover {
-    background: var(--color-surface);
+    background: var(--color-callout-tint);
   }
-
   .faq-chevron {
     flex-shrink: 0;
     transition: transform var(--transition-base);
-    color: var(--color-cta);
+    color: var(--color-ink);
   }
-
   .faq-item.open .faq-chevron {
     transform: rotate(180deg);
   }
-
   .faq-answer {
     display: grid;
     grid-template-rows: 0fr;
     transition: grid-template-rows var(--transition-slow);
   }
-
   .faq-item.open .faq-answer {
     grid-template-rows: 1fr;
   }
-
-  .faq-answer p {
+  .faq-answer-inner {
     min-height: 0;
     overflow: hidden;
-    padding: 0 var(--space-xl) var(--space-lg);
+  }
+  .faq-answer p {
+    padding: 0 var(--space-sm) var(--space-md);
     font-size: 1rem;
-    color: var(--color-secondary);
-    line-height: 1.7;
+    color: var(--color-ink-soft);
+    line-height: 1.6;
   }
 </style>
 
